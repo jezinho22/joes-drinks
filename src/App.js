@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+// import drinkData from "./Components/data.js";
+import Header from "./Components/Header";
+import Main from "./Components/Main";
+import Footer from "./Components/Footer";
+import { useState } from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [cards, setcards] = useState([
+		{
+			drinkItem: "Aldi pinot grigio",
+			volume: 750,
+			alcohol: 11.5,
+			price: 3.99,
+		},
+		{
+			drinkItem: "Stella Artois",
+			volume: 2272,
+			alcohol: 4.6,
+			price: 5.75,
+		},
+	]);
+
+	console.log(cards);
+	function getLocalStorage() {
+		return "nothing";
+		// if (localStorage.getItem("drinks")) {
+		// 	let stored = JSON.parse(localStorage.getItem("drinks"));
+		// 	setcards(stored);
+		// } else {
+		// 	setcards(drinkData);
+		// }
+	}
+
+	return (
+		<div>
+			<Header />
+			<Main />
+			<Footer />
+		</div>
+	);
 }
 
 export default App;
