@@ -1,4 +1,4 @@
-export default function Form() {
+export default function Form({ handleSubmit }) {
 	return (
 		<form>
 			<fieldset>
@@ -9,24 +9,24 @@ export default function Form() {
 					name="drinkItem"
 					placeholder="Item name"
 				/>
-				<label for="drinkItem">Item name:</label>
+				<label htmlFor="drinkItem">Item name:</label>
 				<input type="text" id="price" name="price" placeholder="Price" />
-				<label for="price">Price in £</label>
+				<label htmlFor="price">Price in £</label>
 				<input
 					type="text"
 					id="alcohol"
 					name="alcohol"
 					placeholder="Alcohol %"
 				/>
-				<label for="alcohol"></label>
+				<label htmlFor="alcohol"></label>
 				<input
 					type="text"
 					id="volume"
 					name="volume"
 					placeholder="Total volume of item"
 				/>
-				<label for="volume"></label>
-				<input type="submit" />
+				<label htmlFor="volume"></label>
+				<input type="submit" onClick={handleSubmit} />
 			</fieldset>
 		</form>
 	);

@@ -13,7 +13,6 @@ var UnitsOfAlcohol = function (name, capacity, alcByVolume, price) {
 	this.capacity = capacity;
 	this.alcByVolume = alcByVolume;
 	this.price = price;
-	var tester = "Tester";
 };
 
 UnitsOfAlcohol.prototype.pricePerUnit = function () {
@@ -26,7 +25,7 @@ UnitsOfAlcohol.prototype.pricePerUnit = function () {
 	}, you pay £${pricePerUnit.toFixed(2)} per unit of alcohol`;
 };
 
-var aldiPinot = new UnitsOfAlcohol("Aldi pinot grigio", 750, 11.5, 3.99);
+// var aldiPinot = new UnitsOfAlcohol("Aldi pinot grigio", 750, 11.5, 3.99);
 // var aldiPort = new UnitsOfAlcohol("Aldi port", 750, 19, 6.69);
 // var aldiCider = new UnitsOfAlcohol("Aldi taurus cider", 4 * 440, 5, 2.39);
 // var aldiGalahad = new UnitsOfAlcohol("Aldi galahad beer", 4 * 440, 4, 2.49);

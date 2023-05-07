@@ -30,12 +30,15 @@ function App() {
 		// 	setcards(drinkData);
 		// }
 	}
-	function handleAddItem(event) {
-		console.log("Add item button working");
+
+	function handleSubmit(event) {
+		event.preventDefault();
+		console.log("Handle sbumit is working");
+		console.log(event.target);
 	}
 	return (
 		<div>
-			<Header handleAddItem={handleAddItem} />
+			<Header handleSubmit={handleSubmit} />
 			<Main cards={cards} />
 			<Footer />
 		</div>

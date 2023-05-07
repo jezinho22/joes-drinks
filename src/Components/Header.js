@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Form from "./Form";
 
-export default function Header({ handleAddItem }) {
+export default function Header({ handleSubmit }) {
 	const [showForm, setshowForm] = useState(false);
 	function handleShowForm() {
 		setshowForm(!showForm);
@@ -12,7 +12,7 @@ export default function Header({ handleAddItem }) {
 			<button id="addName" onClick={handleShowForm}>
 				Add item
 			</button>
-			{showForm && <Form handleAddItem={handleAddItem}></Form>}
+			{showForm && <Form handleSubmit={handleSubmit}></Form>}
 		</div>
 	);
 }
