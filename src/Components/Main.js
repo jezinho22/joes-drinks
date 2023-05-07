@@ -1,6 +1,6 @@
 import Card from "./Card";
 
-export default function Main() {
+export default function Main({ cards }) {
 	console.log("Main called");
 	return (
 		<div>
@@ -82,6 +82,10 @@ export default function Main() {
 				increase between two to five times from drinking five-seven units."
 			</p>
 			Main
+			{cards.map((card) => (
+				<Card cardData={card} />
+			))}
+			;
 		</div>
 	);
 }

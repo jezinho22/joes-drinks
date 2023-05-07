@@ -1,10 +1,18 @@
+import { useState } from "react";
 import Form from "./Form";
 
-export default function Header() {
+export default function Header({ handleAddItem }) {
+	const [showForm, setshowForm] = useState(false);
+	function handleShowForm() {
+		setshowForm(!showForm);
+	}
 	return (
 		<div>
 			<h1>Joe's Student Drinking App</h1>
-			{/* <Form submitHandler={submitHandler} /> */}
+			<button id="addName" onClick={handleShowForm}>
+				Add item
+			</button>
+			{showForm && <Form handleAddItem={handleAddItem}></Form>}
 		</div>
 	);
 }

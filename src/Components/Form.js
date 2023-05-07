@@ -26,6 +26,7 @@ export default function Form() {
 					placeholder="Total volume of item"
 				/>
 				<label for="volume"></label>
+				<input type="submit" />
 			</fieldset>
 		</form>
 	);

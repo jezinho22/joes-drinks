@@ -21,7 +21,6 @@ function App() {
 		},
 	]);
 
-	console.log(cards);
 	function getLocalStorage() {
 		return "nothing";
 		// if (localStorage.getItem("drinks")) {
@@ -31,11 +30,13 @@ function App() {
 		// 	setcards(drinkData);
 		// }
 	}
-
+	function handleAddItem(event) {
+		console.log("Add item button working");
+	}
 	return (
 		<div>
-			<Header />
-			<Main />
+			<Header handleAddItem={handleAddItem} />
+			<Main cards={cards} />
 			<Footer />
 		</div>
 	);
