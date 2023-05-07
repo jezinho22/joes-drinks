@@ -34,7 +34,6 @@ function App() {
 	function handleSubmit(event) {
 		event.preventDefault();
 		console.log("Handle sbumit is working");
-		console.log(event.target);
 	}
 	return (
 		<div>

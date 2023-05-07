@@ -1,6 +1,6 @@
 export default function Form({ handleSubmit }) {
 	return (
-		<form>
+		<form onSubmit={handleSubmit}>
 			<fieldset>
 				<legend>Input your item</legend>
 				<input
@@ -26,7 +26,7 @@ export default function Form({ handleSubmit }) {
 					placeholder="Total volume of item"
 				/>
 				<label htmlFor="volume"></label>
-				<input type="submit" onClick={handleSubmit} />
+				<input type="submit" />
 			</fieldset>
 		</form>
 	);
