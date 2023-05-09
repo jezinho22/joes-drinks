@@ -1,9 +1,13 @@
 import Card from "./Card";
 
-export default function Main({ cards }) {
+export default function Main({ cards, form }) {
 	console.log("Main called");
 	return (
 		<div>
+			<div>{form.price}</div>
+			<div>{form.alcohol}</div>
+			<div>{form.drinkItem}</div>
+			<div>{form.volume}</div>
 			<h2>About this app</h2>
 			<p>
 				This app allows you to quickly find out how many units of alcohol a

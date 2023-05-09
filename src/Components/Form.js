@@ -1,32 +1,41 @@
-export default function Form({ handleSubmit }) {
+export default function Form({ handleSubmit, handleChange }) {
 	return (
-		<form onSubmit={handleSubmit}>
+		<form>
 			<fieldset>
 				<legend>Input your item</legend>
+				<label htmlFor="drinkItem">Item name:</label>
 				<input
 					type="text"
 					id="drinkItem"
 					name="drinkItem"
 					placeholder="Item name"
+					onChange={handleChange}
 				/>
-				<label htmlFor="drinkItem">Item name:</label>
-				<input type="text" id="price" name="price" placeholder="Price" />
 				<label htmlFor="price">Price in £</label>
+				<input
+					type="text"
+					id="price"
+					name="price"
+					placeholder="Price"
+					onChange={handleChange}
+				/>
+				<label htmlFor="alcohol">% alcohol</label>
 				<input
 					type="text"
 					id="alcohol"
 					name="alcohol"
 					placeholder="Alcohol %"
+					onChange={handleChange}
 				/>
-				<label htmlFor="alcohol"></label>
+				<label htmlFor="volume">Volume</label>
 				<input
 					type="text"
 					id="volume"
 					name="volume"
 					placeholder="Total volume of item"
+					onChange={handleChange}
 				/>
-				<label htmlFor="volume"></label>
-				<input type="submit" />
+				<button onClick={handleSubmit}>Submit</button>
 			</fieldset>
 		</form>
 	);
