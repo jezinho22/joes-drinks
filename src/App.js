@@ -12,7 +12,7 @@ function App() {
 		alcohol: "",
 		price: "",
 	});
-	const [cards, setcards] = useState([
+	const [cards, setCards] = useState([
 		{
 			drinkItem: "Aldi pinot grigio",
 			volume: 750,
@@ -26,32 +26,26 @@ function App() {
 			price: 5.75,
 		},
 	]);
-	if (localStorage.getItem("drinksStorage")) {
-		console.log("There is local storage");
+	// check local storage for cards
+	const localCards = localStorage.getItem("drinksStorage");
+	if (localCards) {
+		setCards(JSON.parse(localCards));
 	}
+
 	function handleChange(event) {
 		const newForm = { ...form, [event.target.name]: event.target.value };
 		setForm(newForm);
 	}
-	function getLocalStorage() {
-		return "nothing";
-		// if (localStorage.getItem("drinks")) {
-		// 	let stored = JSON.parse(localStorage.getItem("drinks"));
-		// 	setcards(stored);
-		// } else {
-		// 	setcards(drinkData);
-		// }
-	}
 
 	function handleSubmit(event) {
 		event.preventDefault();
-		// quick workaround to push to cards because setcards won't push
+		// quick workaround to push to cards because setCards won't push
 		// there must be an easier way
 		const x = [...cards];
 		x.push(form);
-		setcards(x);
+		setCards(x);
 		// update local storage with new card
-		localStorage.setItem(JSON.stringify("drinksStorage"), cards);
+		localStorage.setItem("drinksStorage", JSON.stringify(cards));
 	}
 
 	return (
