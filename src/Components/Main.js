@@ -3,7 +3,7 @@ import Card from "./Card";
 export default function Main({ cards, form }) {
 	console.log("Main called");
 	return (
-		<div>
+		<main>
 			<div>{form.price}</div>
 			<div>{form.alcohol}</div>
 			<div>{form.drinkItem}</div>
@@ -90,6 +90,6 @@ export default function Main({ cards, form }) {
 				<Card cardData={card} />
 			))}
 			;
-		</div>
+		</main>
 	);
 }

@@ -7,17 +7,19 @@ export default function Header({ handleSubmit, handleChange, form }) {
 		setshowForm(!showForm);
 	}
 	return (
-		<div>
-			<h1>Joe's Student Drinking App</h1>
-			<button id="addName" onClick={handleShowForm}>
-				Add item
-			</button>
+		<header>
+			<div>
+				<h1>Joe's Student Drinking App</h1>
+				<button id="addName" onClick={handleShowForm}>
+					Add item
+				</button>
+			</div>
 			{showForm && (
 				<Form
 					handleSubmit={handleSubmit}
 					handleChange={handleChange}
 					form={form}></Form>
 			)}
-		</div>
+		</header>
 	);
 }

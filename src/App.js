@@ -53,7 +53,7 @@ function App() {
 	}
 
 	return (
-		<div>
+		<body>
 			<Header
 				handleSubmit={handleSubmit}
 				handleChange={handleChange}
@@ -61,7 +61,7 @@ function App() {
 			/>
 			<Main cards={cards} form={form} />
 			<Footer />
-		</div>
+		</body>
 	);
 }
 
