@@ -3,9 +3,10 @@ import "./App.css";
 import Header from "./Components/Header";
 import Main from "./Components/Main";
 import Footer from "./Components/Footer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
+	// localStorage.clear();
 	const [form, setForm] = useState({
 		drinkItem: "",
 		volume: "",
@@ -26,11 +27,14 @@ function App() {
 			price: 5.75,
 		},
 	]);
-	// check local storage for cards
-	const localCards = localStorage.getItem("drinksStorage");
-	if (localCards) {
-		setCards(JSON.parse(localCards));
-	}
+	// useEffect only runs on page load - or on something specified in second argument
+	useEffect(() => {
+		// check local storage for cards
+		const localCards = localStorage.getItem("drinksStorage");
+		if (localCards) {
+			setCards(JSON.parse(localCards));
+		}
+	}, []);
 
 	function handleChange(event) {
 		const newForm = { ...form, [event.target.name]: event.target.value };
@@ -50,7 +54,11 @@ function App() {
 
 	return (
 		<div>
-			<Header handleSubmit={handleSubmit} handleChange={handleChange} />
+			<Header
+				handleSubmit={handleSubmit}
+				handleChange={handleChange}
+				form={form}
+			/>
 			<Main cards={cards} form={form} />
 			<Footer />
 		</div>

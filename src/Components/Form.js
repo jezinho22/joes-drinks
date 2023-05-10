@@ -1,6 +1,22 @@
-export default function Form({ handleSubmit, handleChange }) {
+import { useState, useEffect } from "react";
+
+export default function Form({ handleSubmit, handleChange, form }) {
+	const [multipack, setMultipack] = useState(false);
+	const [multipackVolume, setMultipackVolume] = useState(0);
+	// display additional form inputs
+	function handleMultipack() {
+		setMultipack(!multipack);
+	}
+	// calculate total volume
+	// try making changes to state at this level to get multipack into form and card volume
+	useEffect(() => {
+		setMultipackVolume(parseInt(form.multiCount) * parseInt(form.multiVolume));
+	}, [form.multiVolume || form.multiCount]);
+
+	function getMultipackVolume() {}
 	return (
 		<form>
+			<p>{multipackVolume}</p>
 			<fieldset>
 				<legend>Input your item</legend>
 				<label htmlFor="drinkItem">Item name:</label>
@@ -27,6 +43,34 @@ export default function Form({ handleSubmit, handleChange }) {
 					placeholder="Alcohol %"
 					onChange={handleChange}
 				/>
+				<input
+					type="checkbox"
+					id="multipack"
+					name="multipack"
+					value="multipack"
+					onChange={handleMultipack}
+				/>
+				<label htmlFor="multipack">Is it a multipack?</label>
+				{multipack && (
+					<fieldset>
+						<legend>Multipack</legend>
+						<input
+							className="multipack"
+							name="multiCount"
+							id="multiCount"
+							placeholder="Number in pack"
+							onChange={handleChange}
+						/>
+						<input
+							className="multipack"
+							name="multiVolume"
+							id="multiVolume"
+							placeholder="Volume of one item"
+							onChange={handleChange}
+						/>
+					</fieldset>
+				)}
+
 				<label htmlFor="volume">Volume</label>
 				<input
 					type="text"
@@ -34,6 +78,7 @@ export default function Form({ handleSubmit, handleChange }) {
 					name="volume"
 					placeholder="Total volume of item"
 					onChange={handleChange}
+					value={getMultipackVolume ? getMultipackVolume : 0}
 				/>
 				<button onClick={handleSubmit}>Submit</button>
 			</fieldset>
