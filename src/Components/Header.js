@@ -8,7 +8,7 @@ export default function Header({ handleSubmit, handleChange, form }) {
 	}
 	return (
 		<header>
-			<div>
+			<div className="headerRow">
 				<h1>Joe's Student Drinking App</h1>
 				<button id="addName" onClick={handleShowForm}>
 					Add item

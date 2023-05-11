@@ -16,7 +16,6 @@ export default function Form({ handleSubmit, handleChange, form }) {
 	function getMultipackVolume() {}
 	return (
 		<form>
-			<p>{multipackVolume}</p>
 			<fieldset>
 				<legend>Input your item</legend>
 				<label htmlFor="drinkItem">Item name:</label>
@@ -43,14 +42,25 @@ export default function Form({ handleSubmit, handleChange, form }) {
 					placeholder="Alcohol %"
 					onChange={handleChange}
 				/>
+				<label htmlFor="volume">Volume</label>
 				<input
-					type="checkbox"
-					id="multipack"
-					name="multipack"
-					value="multipack"
-					onChange={handleMultipack}
-				/>
-				<label htmlFor="multipack">Is it a multipack?</label>
+					type="text"
+					id="volume"
+					name="volume"
+					placeholder="Total volume of item"
+					onChange={handleChange}
+					value={getMultipackVolume ? getMultipackVolume : 0}
+				/>{" "}
+				<div className="checkBox">
+					<label htmlFor="multipack">Is it a multipack?</label>
+					<input
+						type="checkbox"
+						id="multipack"
+						name="multipack"
+						value="multipack"
+						onChange={handleMultipack}
+					/>
+				</div>
 				{multipack && (
 					<fieldset>
 						<legend>Multipack</legend>
@@ -70,16 +80,6 @@ export default function Form({ handleSubmit, handleChange, form }) {
 						/>
 					</fieldset>
 				)}
-
-				<label htmlFor="volume">Volume</label>
-				<input
-					type="text"
-					id="volume"
-					name="volume"
-					placeholder="Total volume of item"
-					onChange={handleChange}
-					value={getMultipackVolume ? getMultipackVolume : 0}
-				/>
 				<button onClick={handleSubmit}>Submit</button>
 			</fieldset>
 		</form>

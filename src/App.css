@@ -11,9 +11,11 @@ body {
 
 header {
 	background-color: #b83b94;
+	margin: 0;
 	padding: 0 1rem;
 	display: flex;
-	justify-content: space-between;
+	flex-direction: column;
+	justify-items: space-between;
 	align-items: center;
 }
 h1 {
@@ -21,28 +23,65 @@ h1 {
 	font-size: 2.5rem;
 	display: inline-block;
 }
+.headerRow {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
 header div button {
 	background-color: #e86c34;
 	color: #f8ee2c;
 	border: none;
 	height: 3rem;
-	width: 150px;
+	width: 5rem;
 	font-size: 1.25rem;
 	border-radius: 6px;
 }
-header button:hover {
+header div button:hover {
+	box-sizing: border-box;
 	border: 1px solid #f8ee2c;
 	box-shadow: 2px 2px 2px #551a44;
 }
-@media (max-width: 350px) {
+fieldset {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1rem;
+}
+fieldset input {
+	margin: 0.25rem 0.5rem 0.5rem;
+}
+
+.checkBox {
+	display: flex;
+	flex-direction: rows;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.5rem 0;
+}
+fieldset button {
+	margin-top: 0.5rem;
+	width: 50%;
+	align-self: center;
+}
+.quote {
+	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+	font-size: 1.5rem;
+	color: #e9a9d7;
+}
+@media (max-width: 500px) {
 	h1 {
-		font-size: 2rem;
+		font-size: 20px;
 	}
 	header div {
+		width: 100%;
 		display: flex;
 		flex-direction: row;
+		justify-content: space-between;
 	}
 	header {
 		flex-direction: column;
 	}
 }
+@media (max-width: );
