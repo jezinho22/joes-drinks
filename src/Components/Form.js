@@ -15,7 +15,7 @@ export default function Form({ handleSubmit, handleChange, form }) {
 
 	function getMultipackVolume() {}
 	return (
-		<form>
+		<form className="formShow">
 			<fieldset>
 				<legend>Input your item</legend>
 				<label htmlFor="drinkItem">Item name:</label>
@@ -42,7 +42,7 @@ export default function Form({ handleSubmit, handleChange, form }) {
 					placeholder="Alcohol %"
 					onChange={handleChange}
 				/>
-				<label htmlFor="volume">Volume</label>
+				<label htmlFor="volume">Volume in ml</label>
 				<input
 					type="text"
 					id="volume"
@@ -75,7 +75,7 @@ export default function Form({ handleSubmit, handleChange, form }) {
 							className="multipack"
 							name="multiVolume"
 							id="multiVolume"
-							placeholder="Volume of one item"
+							placeholder="Volume (ml) of one item"
 							onChange={handleChange}
 						/>
 					</fieldset>

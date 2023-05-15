@@ -44,13 +44,24 @@ header div button:hover {
 	border: 1px solid #f8ee2c;
 	box-shadow: 2px 2px 2px #551a44;
 }
+form.formShow {
+	width: 75vw;
+	height: 75vh;
+	position: absolute;
+	top: 100px;
+	left: 0;
+	background-color: #b83b94;
+	padding: 2rem;
+}
 fieldset {
 	display: flex;
 	flex-direction: column;
-	margin-bottom: 1rem;
+	max-width: 400px;
+	margin: 0 auto 1rem;
 }
 fieldset input {
 	margin: 0.25rem 0.5rem 0.5rem;
+	line-height: 1.5rem;
 }
 
 .checkBox {
@@ -62,8 +73,12 @@ fieldset input {
 }
 fieldset button {
 	margin-top: 0.5rem;
-	width: 50%;
+	width: 150px;
 	align-self: center;
+	background-color: #e86c34;
+	color: #f8ee2c;
+	border-radius: 3px;
+	font-size: 1.2rem;
 }
 .quote {
 	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
@@ -84,4 +99,3 @@ fieldset button {
 		flex-direction: column;
 	}
 }
-@media (max-width: );
