@@ -4,10 +4,6 @@ export default function Main({ cards, form }) {
 	console.log("Main called");
 	return (
 		<main>
-			{/* <div>{form.price}</div>
-			<div>{form.alcohol}</div>
-			<div>{form.drinkItem}</div>
-			<div>{form.volume}</div> */}
 			<p>
 				This app allows you to quickly find out how many units of alcohol a
 				drink contains, and also what kind of alcohol value for money this
