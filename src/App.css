@@ -44,6 +44,12 @@ header div button:hover {
 	border: 1px solid #f8ee2c;
 	box-shadow: 2px 2px 2px #551a44;
 }
+Menu {
+	position: absolute;
+	top: 50px;
+	right: 100px;
+	/* z-index: 10; */
+}
 form.formShow {
 	width: 75vw;
 	height: 75vh;
