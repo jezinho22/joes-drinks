@@ -5,21 +5,22 @@ import Menu from "./Menu";
 
 export default function Header({ handleSubmit, handleChange, form }) {
 	const [showForm, setshowForm] = useState(false);
-	const [showMenu, setShowMenu] = useState(false);
+	const [showMenu, setShowMenu] = useState("menu-close");
+
 	function handleShowForm() {
 		setshowForm(!showForm);
 	}
-	function handleShowMenu (){
-		setShowMenu(!showMenu)
+
+	function handleShowMenu (instruction){
+		setShowMenu(instruction)
 	}
+
 	return (
 		<header>
 			<div className="headerRow">
 				<h1>Joe's Student Drinking App</h1>
-				<img src={burgerMenu} alt="hamburger menu icon" onClick={handleShowMenu}></img>
-				{showMenu && (
-					<Menu showForm={handleShowForm}/>
-				)}
+				<img src={burgerMenu} alt="hamburger menu icon" onClick={()=>handleShowMenu("menu-open")}></img>
+					<Menu showMenu={showMenu} handleShowMenu={handleShowMenu}/>
 				{/* <button id="addName" onClick={handleShowForm}>
 					Add item
 				</button> */}
