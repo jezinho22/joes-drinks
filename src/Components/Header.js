@@ -9,6 +9,7 @@ export default function Header({ handleSubmit, handleChange, form }) {
 
 	function handleShowForm() {
 		setshowForm(!showForm);
+		setShowMenu("menu-close")
 	}
 
 	function handleShowMenu (instruction){
@@ -20,7 +21,7 @@ export default function Header({ handleSubmit, handleChange, form }) {
 			<div className="headerRow">
 				<h1>Joe's Student Drinking App</h1>
 				<img src={burgerMenu} alt="hamburger menu icon" onClick={()=>handleShowMenu("menu-open")}></img>
-					<Menu showMenu={showMenu} handleShowMenu={handleShowMenu}/>
+					<Menu showMenu={showMenu} handleShowMenu={handleShowMenu} handleShowForm={handleShowForm}/>
 				{/* <button id="addName" onClick={handleShowForm}>
 					Add item
 				</button> */}

@@ -16,6 +16,7 @@ export default function Form({ handleSubmit, handleChange, form }) {
 	function getMultipackVolume() {}
 	return (
 		<form className="formShow">
+			<div className="closeForm">X</div>
 			<fieldset>
 				<legend>Input your item</legend>
 				<label htmlFor="drinkItem">Item name:</label>

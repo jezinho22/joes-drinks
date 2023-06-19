@@ -36,7 +36,7 @@ function App() {
 			setCards(JSON.parse(localCards));
 		}
 	}, []);
-
+	// updating form inputs
 	function handleChange(event) {
 		const newForm = { ...form, [event.target.name]: event.target.value };
 		setForm(newForm);
