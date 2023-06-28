@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function Form({ handleSubmit, handleChange, form }) {
+export default function Form({ handleSubmit, handleChange, form, handleShowForm }) {
 	const [multipack, setMultipack] = useState(false);
 	const [multipackVolume, setMultipackVolume] = useState(0);
 	// display additional form inputs
@@ -13,10 +13,11 @@ export default function Form({ handleSubmit, handleChange, form }) {
 		setMultipackVolume(parseInt(form.multiCount) * parseInt(form.multiVolume));
 	}, [form.multiVolume || form.multiCount]);
 
+
 	function getMultipackVolume() {}
 	return (
 		<form className="formShow">
-			<div className="closeForm">X</div>
+			<div className="closeForm" onClick={handleShowForm}>X</div>
 			<fieldset>
 				<legend>Input your item</legend>
 				<label htmlFor="drinkItem">Item name:</label>

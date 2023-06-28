@@ -1,5 +1,6 @@
-import "./App.css";
 import "./reset.css"
+import "./App.css";
+
 // import drinkData from "./Components/data.js";
 import Header from "./Components/Header";
 import Main from "./Components/Main";

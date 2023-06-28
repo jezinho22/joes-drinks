@@ -30,7 +30,8 @@ export default function Header({ handleSubmit, handleChange, form }) {
 				<Form
 					handleSubmit={handleSubmit}
 					handleChange={handleChange}
-					form={form}></Form>
+					form={form}
+					handleShowForm={handleShowForm}></Form>
 			)}
 		</header>
 	);

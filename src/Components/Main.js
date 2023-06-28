@@ -1,9 +1,10 @@
 import Card from "./Card";
 
-export default function Main({ cards, form }) {
+export default function Main({cards}) {
 	console.log("Main called");
 	return (
-		<main>
+		<main id="about-app">
+			<h2>About this app</h2>
 			<p>
 				This app allows you to quickly find out how many units of alcohol a
 				drink contains, and also what kind of alcohol value for money this
@@ -40,13 +41,8 @@ export default function Main({ cards, form }) {
 				Work out how many units gets you feeling how you want to feel and then
 				work out how much of any given drink will provide that.
 			</p>
-			<h2>About drinking alcohol</h2>
-			<p>
-				Extracted from
-				<a href="https://www.priorygroup.com/blog/nearly-half-of-us-dont-know-what-constitutes-binge-drinking">
-					Priory Group
-				</a>
-			</p>
+			<h2 id="about-alcohol">About drinking alcohol</h2>
+
 			<p>
 				To talk about 'units' of alcohol frequently confuses people, because
 				many think a unit is a glass of wine almost regardless of its size, and
@@ -101,11 +97,17 @@ export default function Main({ cards, form }) {
 				harm like accidents or injuries increase between two to five times from
 				drinking five to seven units."
 			</p>
-			Main
+			<p id="source">
+				{`Extracted from: `}
+				<a href="https://www.priorygroup.com/blog/nearly-half-of-us-dont-know-what-constitutes-binge-drinking">
+					priorygroup.com
+				</a>
+			</p>
+			<div id="drink-cards">
 			{cards.map((card) => (
 				<Card cardData={card} />
 			))}
-			;
+			</div>
 		</main>
 	);
 }
