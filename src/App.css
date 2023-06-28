@@ -2,20 +2,19 @@
 
 body {
 	width: 100vw;
-	height: 100vw;
+	height: 100vh;
 	background-color: #ca1044;
 	color: #f8ee2c;
 	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-	margin: 0;
+	margin: auto;
 }
 /* header */
 header {
 	position: fixed;
-	top: 0;
 	width: 100%;
+	top: 0;
 	background-color: #b83b94;
-	margin: 0;
-	padding: 0 2rem;
+	padding: 1rem 2rem;
 	display: flex;
 	flex-direction: column;
 	justify-items: space-between;
@@ -104,7 +103,7 @@ fieldset {
 	display: flex;
 	flex-direction: column;
 	max-width: 400px;
-	margin: 0 auto 1rem;
+	margin: 1rem auto;
 }
 fieldset input {
 	margin: 0.25rem 0.5rem 0.5rem;
@@ -129,6 +128,31 @@ fieldset button {
 }
 
 /* about */
+main {
+	width: 80%;
+	margin: auto;
+}
+h2#about-alcohol {
+	margin-top: -4rem;
+}
+/* h2#about-app {
+	padding-top: 20rem;
+	margin-top: -4rem;
+} */
+h2 {
+	font-size: 1.5rem;
+	margin-bottom: 2rem;
+	color:aliceblue;
+	padding-top: 8rem;
+
+}
+p { 
+	font-size: 1rem;
+	line-height: 1.4rem;
+}
+#source {
+	margin-top: 1rem;
+}
 .quote {
 	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 	font-size: 1.5rem;
@@ -136,6 +160,47 @@ fieldset button {
 	margin: 1rem 0;
 }
 
+/* cards */
+#drink-cards {  
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	
+}
+.card * {
+	border: 1px solid black;
+}
+.card {
+	border: 3px solid #e9a9d7;
+	border-radius: 10px;
+	width: 200px;
+	padding: 1rem 0.5rem;
+	margin: 1rem;
+}
+
+.card h2, .card h3, .card h4, .card p {
+	text-align: center;
+}
+.card h2{
+	margin-top: 0;
+	text-align: center;
+	padding: 0;
+}
+.card h3 {
+	font-size: 1.1rem;
+	color: #e9a9d7;
+	font-weight: 600;
+	margin-top: 1rem;
+}
+.card p {
+	color: #e9a9d7;
+	font-weight: 700;
+	margin-top: 0.5rem ;
+}
+.card h4{
+	margin: 0.2rem 0;
+
+}
 /* responsiveness */
 @media (max-width: 500px) {
 	h1 {
