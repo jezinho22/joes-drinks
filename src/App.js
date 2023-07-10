@@ -40,6 +40,9 @@ function App() {
 	// updating form inputs
 	function handleChange(event) {
 		const newForm = { ...form, [event.target.name]: event.target.value };
+		if (newForm.multipack) {
+			newForm.volume = newForm.multiCount * newForm.multiVolume;
+		}
 		console.log(newForm);
 		setForm(newForm);
 	}
@@ -51,6 +54,8 @@ function App() {
 		const x = [...cards];
 		x.push(form);
 		setCards(x);
+		const clearForm = { ...form, multiVolume: 0, multiCount: 0 };
+		setForm(clearForm);
 		// update local storage with new card
 		localStorage.setItem("drinksStorage", JSON.stringify(cards));
 	}
