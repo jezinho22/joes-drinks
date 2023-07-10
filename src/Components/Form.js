@@ -56,7 +56,6 @@ export default function Form({
 					name="volume"
 					placeholder="Total volume of item"
 					onChange={handleChange}
-					value={multipackVolume ? multipackVolume : 0}
 				/>{" "}
 				<div className="checkBox">
 					<label htmlFor="multipack">Is it a multipack?</label>
