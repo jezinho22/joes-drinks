@@ -1,4 +1,4 @@
-import "./reset.css"
+import "./reset.css";
 import "./App.css";
 
 // import drinkData from "./Components/data.js";
@@ -40,6 +40,7 @@ function App() {
 	// updating form inputs
 	function handleChange(event) {
 		const newForm = { ...form, [event.target.name]: event.target.value };
+		console.log(newForm);
 		setForm(newForm);
 	}
 
