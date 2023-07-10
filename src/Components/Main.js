@@ -1,7 +1,6 @@
 import Card from "./Card";
 
-export default function Main({cards}) {
-	console.log("Main called");
+export default function Main({ cards }) {
 	return (
 		<main id="about-app">
 			<h2>About this app</h2>
@@ -104,9 +103,9 @@ export default function Main({cards}) {
 				</a>
 			</p>
 			<div id="drink-cards">
-			{cards.map((card) => (
-				<Card cardData={card} />
-			))}
+				{cards.map((card) => (
+					<Card cardData={card} />
+				))}
 			</div>
 		</main>
 	);
