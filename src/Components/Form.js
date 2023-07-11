@@ -15,7 +15,8 @@ export default function Form({
 	// calculate total volume
 	// try making changes to state at this level to get multipack into form and card volume
 	useEffect(() => {
-		setMultipackVolume(parseInt(form.multiCount) * parseInt(form.multiVolume));
+		let multiVol = parseInt(form.multiCount) * parseInt(form.multiVolume)
+		setMultipackVolume(multiVol);
 	}, [form.multiVolume || form.multiCount]);
 
 	return (
@@ -56,6 +57,7 @@ export default function Form({
 					name="volume"
 					placeholder="Total volume of item"
 					onChange={handleChange}
+					value={multipackVolume ? multipackVolume : form.volume.value}
 				/>{" "}
 				<div className="checkBox">
 					<label htmlFor="multipack">Is it a multipack?</label>
