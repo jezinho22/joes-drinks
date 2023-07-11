@@ -206,8 +206,8 @@ p {
 	margin: 0.2rem 0;
 }
 .card img {
-	height: 10px;
-	width: 32px;
+	height: 24px;
+	width: 24px;
 	object-fit: cover;
 }
 /* responsiveness */
