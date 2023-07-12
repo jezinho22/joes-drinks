@@ -20,8 +20,9 @@ export default function Card({ cardData }) {
 					((cardData.volume * cardData.alcohol) / 1000)
 				).toFixed(2)}{" "}
 			</h4>
+			{/* move this to a function, add a state variable for the pints */}
 			{for (let i = 0; i < alcoholUnits / 2.2; i += 2.2 ){
-				
+
 			}}
 			<img src={pintPot} />
 		</div>
