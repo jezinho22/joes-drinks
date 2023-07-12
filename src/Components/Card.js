@@ -1,5 +1,8 @@
 import pintPot from "../Resources/pint.png";
 export default function Card({ cardData }) {
+	function alcoholUnits(){
+		return ((cardData.volume * cardData.alcohol) / 1000).toFixed(1)
+	}
 	return (
 		<div className="card">
 			<h2 className="cardHead">{cardData.drinkItem}</h2>
@@ -8,7 +11,7 @@ export default function Card({ cardData }) {
 			<p>Alcohol {cardData.alcohol} %</p>
 
 			<h4>
-				Units: {((cardData.volume * cardData.alcohol) / 1000).toFixed(1)} units
+				Units: {alcoholUnits} units
 			</h4>
 			<h4>
 				Price per unit: £
@@ -17,6 +20,9 @@ export default function Card({ cardData }) {
 					((cardData.volume * cardData.alcohol) / 1000)
 				).toFixed(2)}{" "}
 			</h4>
+			{for (let i = 0; i < alcoholUnits / 2.2; i += 2.2 ){
+				
+			}}
 			<img src={pintPot} />
 		</div>
 	);
