@@ -37,39 +37,49 @@ function App() {
 			setCards(JSON.parse(localCards));
 		}
 	}, []);
+	function callSetStateForm() {
+		setForm({
+			drinkItem: "",
+			volume: "",
+			alcohol: "",
+			price: "",
+		});
+	}
 	// updating form inputs
 	function handleChange(event) {
 		const newForm = { ...form, [event.target.name]: event.target.value };
 		if (newForm.multipack) {
 			newForm.volume = newForm.multiCount * newForm.multiVolume;
 		}
-		console.log(newForm);
+		// console.log(newForm);
 		setForm(newForm);
 	}
-
+	// suubmit button for form
 	function handleSubmit(event) {
 		event.preventDefault();
+		console.log(form);
 		// quick workaround to push to cards because setCards won't push
 		// there must be an easier way
 		const x = [...cards];
 		x.push(form);
 		setCards(x);
-		const clearForm = { ...form, multiVolume: 0, multiCount: 0 };
-		setForm(clearForm);
+		// const clearForm = { ...form, multiVolume: 0, multiCount: 0 };
+		// setForm(clearForm);
 		// update local storage with new card
 		localStorage.setItem("drinksStorage", JSON.stringify(cards));
 	}
 
 	return (
-		<body>
+		<div>
 			<Header
 				handleSubmit={handleSubmit}
 				handleChange={handleChange}
 				form={form}
+				callSetStateForm={callSetStateForm}
 			/>
 			<Main cards={cards} form={form} />
 			<Footer />
-		</body>
+		</div>
 	);
 }
 
