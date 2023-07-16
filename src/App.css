@@ -103,6 +103,10 @@ form.formShow {
 	background-color: #b83b94;
 	padding: 2rem;
 }
+legend {
+	margin: 10px;
+	font-weight: 700;;
+}
 fieldset {
 	display: flex;
 	flex-direction: column;
