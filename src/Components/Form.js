@@ -15,11 +15,11 @@ export default function Form({
 	}
 	// calculate total volume
 	// try making changes to state at this level to get multipack into form and card volume
-	useEffect(() => {
-		let multiVol = parseInt(form.multiCount) * parseInt(form.multiVolume);
-		console.log(multiVol);
-		setMultipackVolume(multiVol);
-	}, [form.multiVolume, form.multiCount]);
+	// useEffect(() => {
+	// 	let multiVol = parseInt(form.multiCount) * parseInt(form.multiVolume);
+	// 	console.log(form.multiPack);
+	// 	setMultipackVolume(multiVol);
+	// }, [form.multiVolume, form.multiCount]);
 
 	return (
 		<form className="formShow">
@@ -52,17 +52,20 @@ export default function Form({
 					placeholder="Alcohol %"
 					onChange={handleChange}
 				/>
+				
 				<label htmlFor="volume">Volume in ml</label>
 				<input
-					type="text"
-					id="volume"
-					name="volume"
-					placeholder="Total volume of item"
-					onChange={handleChange}
-					value={multipackVolume ? multipackVolume : form.volume.value}
-				/>{" "}
+						type="text"
+						id="volume"
+						name="volume"
+						placeholder={parseInt(form.multiCount) * parseInt(form.multiVolume) ? parseInt(form.multiCount) * parseInt(form.multiVolume) : "Volume (ml)"}
+						className = {multipack ? "greyed-out" : "live"}
+						disabled = {multipack}
+						onChange={handleChange}
+					/>
+				
 				<div className="checkBox">
-					<label htmlFor="multipack">Is it a multipack?</label>
+					<label htmlFor="multipack">Is it a multi pack?</label>
 					<input
 						type="checkbox"
 						id="multipack"
