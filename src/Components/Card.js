@@ -1,6 +1,14 @@
 import pintPot from "../Resources/pint.png";
+import { useState , useEffect} from "react";
 
-export default function Card({ cardData }) {
+export default function Card({ cardData, key }) {
+
+	const [pintCompare, setPintCompare] = useState([])
+	// set up pint comparison
+	useEffect(() => {
+	equivalentPints()
+	}, [])
+
 	function alcoholUnits() {
 		return ((cardData.volume * cardData.alcohol) / 1000).toFixed(1);
 	}
@@ -13,19 +21,20 @@ export default function Card({ cardData }) {
 		const pintHeight = 24;
 		let partPint = (pintHeight * (alcUnits % 2.2)) / 2.2;
 		let pintsArray = [
-			{ src: "../Resources/pint.png", alt: "pint-glass", height: partPint },
+			{ src: "../Resources/pint.png", alt: "pint-glass", height: `${partPint}px` },
 		];
 		for (let i = 0; i < pints; i++) {
-			pintsArray.push({
+			pintsArray.unshift({
 				src: "../Resources/pint.png",
 				alt: "pint-glass",
 				height: 24,
 			});
 		}
-		return pintsArray;
+		setPintCompare(pintsArray)
+		console.log(pintsArray);
 	}
 	return (
-		<div className="card">
+		<div className="card" key={key}>
 			<h2 className="cardHead">{cardData.drinkItem}</h2>
 			<h3>£{cardData.price}</h3>
 			<p>Volume: {cardData.volume} ml</p>
@@ -37,11 +46,11 @@ export default function Card({ cardData }) {
 				{(
 					cardData.price /
 					((cardData.volume * cardData.alcohol) / 1000)
-				).toFixed(2)}{" "}
+				).toFixed(2)}
 			</h4>
-			{/* move this to a function, add a state variable for the pints */}
-			{/* <p>That's the same as {equivalentPints()} pints</p> */}
-			<img src={pintPot} alt="pint-glass" />
+			<div className = 'pints'>
+			{pintCompare.map((item, index) => (
+				<img src={pintPot} alt={item.alt} key={index} style={{ height : item.height }}/>			))}
+			</div>
 		</div>
-	);
-}
+	)}

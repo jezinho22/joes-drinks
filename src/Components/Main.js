@@ -103,8 +103,8 @@ export default function Main({ cards }) {
 				</a>
 			</p>
 			<div id="drink-cards">
-				{cards.map((card) => (
-					<Card cardData={card} />
+				{cards.map((card, index) => (
+					<Card cardData={card} key={index}/>
 				))}
 			</div>
 		</main>
