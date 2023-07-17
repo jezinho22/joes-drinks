@@ -48,9 +48,9 @@ function App() {
 	// updating form inputs
 	function handleChange(event) {
 		const newForm = { ...form, [event.target.name]: event.target.value };
-		if (newForm.multipack) {
-			newForm.volume = newForm.multiCount * newForm.multiVolume;
-		}
+		// if (newForm.multipack) {
+		// 	newForm.volume = newForm.multiCount * newForm.multiVolume;
+		// }
 		// console.log(newForm);
 		setForm(newForm);
 	}

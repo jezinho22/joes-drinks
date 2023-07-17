@@ -13,13 +13,6 @@ export default function Form({
 	function handleMultipack() {
 		setMultipack(!multipack);
 	}
-	// calculate total volume
-	// try making changes to state at this level to get multipack into form and card volume
-	// useEffect(() => {
-	// 	let multiVol = parseInt(form.multiCount) * parseInt(form.multiVolume);
-	// 	console.log(form.multiPack);
-	// 	setMultipackVolume(multiVol);
-	// }, [form.multiVolume, form.multiCount]);
 
 	return (
 		<form className="formShow">

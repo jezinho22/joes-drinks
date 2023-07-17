@@ -95,8 +95,8 @@ form {
 	transform: width 0.3s;
 }
 form.formShow {
-	width: 75vw;
-	height: 75vh;
+	width: 700px;
+	height: 700px;
 	position: absolute;
 	top: 100px;
 	left: 0;
@@ -173,14 +173,12 @@ p {
 	flex-wrap: wrap;
 	justify-content: center;
 }
-.card * {
-	border: 1px solid black;
-}
+
 .card {
 	border: 3px solid #e9a9d7;
 	border-radius: 10px;
 	width: 200px;
-	padding: 1rem 0.5rem;
+	padding: 1rem 0.5rem 0;
 	margin: 1rem;
 }
 
@@ -209,10 +207,17 @@ p {
 .card h4 {
 	margin: 0.2rem 0;
 }
-.card img {
-	height: 24px;
+.pints {
+	display: flex;
+	justify-content: center;
+	align-items:end;
+}
+.pints img {
 	width: 24px;
 	object-fit: cover;
+	object-position: center bottom;
+	margin: 1rem 0;
+	
 }
 /* responsiveness */
 @media (max-width: 500px) {
