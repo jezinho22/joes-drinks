@@ -1,3 +1,5 @@
+import "./Form.css"
+
 import { useState, useEffect } from "react";
 
 export default function Form({

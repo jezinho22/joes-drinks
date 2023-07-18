@@ -1,0 +1,36 @@
+.menu {
+	position: fixed;
+	background-color: yellow;
+	right: 1rem;
+	top: 0;
+	z-index: 1;
+	overflow-y: hidden;
+	transition: height 0.35s;
+
+	/* padding: 3rem 0; */
+}
+.menu-open {
+	height: 400px;
+}
+.menu-close {
+	height: 0;
+}
+a {
+	text-decoration: none;
+}
+
+.menu ul li {
+	background-color: #ca1044;
+	color: #f8ee2c;
+	border-radius: 10px;
+	margin: 2rem 3rem;
+	z-index: 2;
+	font-size: 2rem;
+	padding: 0.5rem 1rem;
+}
+.menu ul a:first-of-type {
+	margin-top: 5rem;
+}
+.menu ul a:last-of-type {
+	margin-bottom: 5rem;
+}

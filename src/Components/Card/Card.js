@@ -1,4 +1,6 @@
-import pintPot from "../Resources/pint.png";
+import "./Card.css"
+
+import pintPot from "../../Resources/pint.png";
 import { useState , useEffect} from "react";
 
 export default function Card({ cardData, key }) {

@@ -1,4 +1,4 @@
-import Card from "./Card";
+import Card from "../Card/Card";
 
 export default function Main({ cards }) {
 	return (
@@ -102,6 +102,11 @@ export default function Main({ cards }) {
 					priorygroup.com
 				</a>
 			</p>
+			<div className="buttons">
+				<button id="sortPricePerUnit">Sort by price per unit</button>
+				<button id="sortPrice">Sort by price</button>
+				<button className="sortAlpha">Sort by name</button>
+			</div>
 			<div id="drink-cards">
 				{cards.map((card, index) => (
 					<Card cardData={card} key={index}/>
