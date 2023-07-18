@@ -1,0 +1,38 @@
+/* header */
+header {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	background-color: #b83b94;
+	padding: 1rem 2rem;
+	display: flex;
+	flex-direction: column;
+	justify-items: space-between;
+	align-items: center;
+}
+h1 {
+	font-weight: 400;
+	font-size: 2.5rem;
+	display: inline-block;
+}
+.headerRow {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+header div button {
+	background-color: #e86c34;
+	color: #f8ee2c;
+	border: none;
+	height: 3rem;
+	width: 5rem;
+	font-size: 1.25rem;
+	border-radius: 6px;
+}
+
+header div button:hover {
+	border: 1px solid #f8ee2c;
+	box-shadow: 2px 2px 2px #551a44;
+}

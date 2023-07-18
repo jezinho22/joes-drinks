@@ -1,3 +1,4 @@
+import "./Menu.css"
 
 export default function Menu({showMenu,handleShowMenu, handleShowForm}) {
   return (

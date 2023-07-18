@@ -2,9 +2,9 @@ import "./reset.css";
 import "./App.css";
 
 // import drinkData from "./Components/data.js";
-import Header from "./Components/Header";
-import Main from "./Components/Main";
-import Footer from "./Components/Footer";
+import Header from "./Components/Header/Header";
+import Main from "./Components/Main/Main";
+import Footer from "./Components/Footer/Footer";
 import { useEffect, useState } from "react";
 
 function App() {

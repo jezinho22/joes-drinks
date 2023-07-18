@@ -1,7 +1,10 @@
+import './Header.css'
+
+import Form from "../Form/Form";
+import Menu from "../Menu/Menu";
+
+import burgerMenu from "../../Resources/burger-bar.png";
 import { useState } from "react";
-import Form from "./Form";
-import burgerMenu from "../Resources/burger-bar.png";
-import Menu from "./Menu";
 
 export default function Header({
 	handleSubmit,
@@ -14,9 +17,11 @@ export default function Header({
 
 	function handleShowForm() {
 		setshowForm(!showForm);
+		if (showForm){ 
 		setShowMenu("menu-close");
 		callSetStateForm();
-	}
+		}
+	}	
 
 	function handleShowMenu(instruction) {
 		setShowMenu(instruction);
