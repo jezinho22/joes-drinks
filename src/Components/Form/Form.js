@@ -10,7 +10,6 @@ export default function Form({
 }) {
 	//enable form to display multipack as volume
 	const [multipack, setMultipack] = useState(false);
-	const [multipackVolume, setMultipackVolume] = useState(0);
 	// display additional form inputs
 	function handleMultipack() {
 		setMultipack(!multipack);

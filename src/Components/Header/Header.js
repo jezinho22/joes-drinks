@@ -4,28 +4,17 @@ import Form from "../Form/Form";
 import Menu from "../Menu/Menu";
 
 import burgerMenu from "../../Resources/burger-bar.png";
-import { useState } from "react";
 
 export default function Header({
 	handleSubmit,
 	handleChange,
 	form,
-	callSetStateForm,
+	handleShowForm,
+	handleShowMenu,
+	showForm,
+	showMenu
 }) {
-	const [showForm, setshowForm] = useState(false);
-	const [showMenu, setShowMenu] = useState("menu-close");
 
-	function handleShowForm() {
-		setshowForm(!showForm);
-		if (showForm){ 
-		setShowMenu("menu-close");
-		callSetStateForm();
-		}
-	}	
-
-	function handleShowMenu(instruction) {
-		setShowMenu(instruction);
-	}
 
 	return (
 		<header>
