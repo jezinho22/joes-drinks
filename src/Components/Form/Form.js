@@ -17,7 +17,7 @@ export default function Form({
 	}
 
 	return (
-		<form className={showForm}>
+		<form className={showForm} onSubmit={handleSubmit} >
 			<div className="closeForm" onClick={()=>handleShowForm("close")}>
 				X
 			</div>
@@ -88,7 +88,8 @@ export default function Form({
 						/>
 					</fieldset>
 				)}
-				<button onClick={handleSubmit}>Submit</button>
+				
+				<button type="submit">Submit</button>
 			</fieldset>
 		</form>
 	);

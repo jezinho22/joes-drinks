@@ -23,7 +23,7 @@ function App() {
 	}
 
 	return (
-		<div>
+		<div className='App'>
 			<Header
 				handleShowMenu={handleShowMenu}
 				showMenu={showMenu}

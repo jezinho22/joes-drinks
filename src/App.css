@@ -9,11 +9,8 @@ body {
 	margin: auto;
 }
 
-
-
-
 /* about */
-main {
+.Main {
 	width: 80%;
 	margin: auto;
 }
@@ -44,19 +41,43 @@ p {
 	margin: 1rem 0;
 }
 
+.buttons {
+	margin-top: 120px;
+	display: flex;
+	justify-content: space-around;
 
-/* responsiveness */
-@media (max-width: 500px) {
-	h1 {
-		font-size: 20px;
-	}
-	header div {
-		width: 100%;
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-	}
-	header {
-		flex-direction: column;
+}
+
+.buttons button {
+	width: 150px;
+	height: 3rem;
+	background-color: #f8ee2c;
+	color:#b83b94;
+	border-radius: 5px;
+	font-size: 1.2rem;
+	border:none;
+	box-shadow: 2px 2px 3px rgb(100, 5, 5);
+}
+div#about-app+div{
+}
+
+.cards-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+@media (max-width: 360px) {
+
+	.buttons button {
+		width: 120px;
+		height: 3rem;
+		margin: 0 0.5rem;
+		background-color: #f8ee2c;
+		color:#b83b94;
+		border-radius: 5px;
+		font-size: 0.8rem;
+		border:none;
+		box-shadow: 2px 2px 3px rgb(100, 5, 5);
 	}
 }
