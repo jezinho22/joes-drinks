@@ -1,12 +1,13 @@
 import "./Form.css"
 
-import { useState, useEffect } from "react";
+import { useState} from "react";
 
 export default function Form({
 	handleSubmit,
 	handleChange,
 	form,
 	handleShowForm,
+	showForm
 }) {
 	//enable form to display multipack as volume
 	const [multipack, setMultipack] = useState(false);
@@ -16,8 +17,8 @@ export default function Form({
 	}
 
 	return (
-		<form className="formShow">
-			<div className="closeForm" onClick={handleShowForm}>
+		<form className={showForm}>
+			<div className="closeForm" onClick={()=>handleShowForm("close")}>
 				X
 			</div>
 			<fieldset>

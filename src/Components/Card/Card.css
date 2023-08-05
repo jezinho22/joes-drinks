@@ -41,7 +41,7 @@
 .pints {
 	display: flex;
 	justify-content: center;
-	align-items:end;
+	align-items:flex-end;
 }
 .pints img {
 	width: 24px;

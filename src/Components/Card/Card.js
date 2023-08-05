@@ -15,7 +15,6 @@ export default function Card({ cardData, key }) {
 		return ((cardData.volume * cardData.alcohol) / 1000).toFixed(1);
 	}
 	function equivalentPints() {
-		console.log("equiv");
 		//whole pints
 		let alcUnits = alcoholUnits();
 		let pints = Math.floor(alcUnits / 2.2);
@@ -33,7 +32,6 @@ export default function Card({ cardData, key }) {
 			});
 		}
 		setPintCompare(pintsArray)
-		console.log(pintsArray);
 	}
 	return (
 		<div className="card" key={key}>

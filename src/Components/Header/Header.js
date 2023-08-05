@@ -6,13 +6,9 @@ import Menu from "../Menu/Menu";
 import burgerMenu from "../../Resources/burger-bar.png";
 
 export default function Header({
-	handleSubmit,
-	handleChange,
-	form,
-	handleShowForm,
 	handleShowMenu,
-	showForm,
-	showMenu
+	showMenu,
+	handleShowForm
 }) {
 
 
@@ -33,13 +29,7 @@ export default function Header({
 					Add item
 				</button> */}
 			</div>
-			{showForm && (
-				<Form
-					handleSubmit={handleSubmit}
-					handleChange={handleChange}
-					form={form}
-					handleShowForm={handleShowForm}></Form>
-			)}
+
 		</header>
 	);
 }
