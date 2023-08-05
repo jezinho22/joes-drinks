@@ -67,9 +67,11 @@ export default function Main({handleShowForm, showForm}) {
 		event.target.reset()
 		const viewCards = document.querySelector('#drink-cards')
 		viewCards.scrollIntoView({ behavior: 'smooth', block: 'center' })
-
-
 	}
+	// function sortByPrice(){
+	// 	let sorted = cards.sort((a, b)=> a.price - b.price)
+
+	// }
 
 	return (
 		<div className = "Main">
