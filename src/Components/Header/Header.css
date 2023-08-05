@@ -1,13 +1,13 @@
 /* header */
+
 header {
-	position: fixed;
 	width: 100%;
+	position: fixed;
 	top: 0;
 	background-color: #b83b94;
-	padding: 1rem 2rem;
+	padding: 1rem 3rem;
 	display: flex;
-	flex-direction: column;
-	justify-items: space-between;
+	justify-content: space-between;
 	align-items: center;
 }
 h1 {
@@ -15,13 +15,7 @@ h1 {
 	font-size: 2.5rem;
 	display: inline-block;
 }
-.headerRow {
-	width: 100%;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-between;
-}
+
 header div button {
 	background-color: #e86c34;
 	color: #f8ee2c;
@@ -35,4 +29,35 @@ header div button {
 header div button:hover {
 	border: 1px solid #f8ee2c;
 	box-shadow: 2px 2px 2px #551a44;
+}
+
+/* responsiveness */
+@media (max-width: 550px) {
+	h1 {
+		font-size: 1.5rem;
+	}
+	header div {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+	header img{
+		width: 50px;
+	}
+
+}
+@media (max-width: 360px) {
+	header{
+		padding: 1rem;
+	}
+
+	header div {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+
 }

@@ -1,6 +1,5 @@
 import './Header.css'
 
-import Form from "../Form/Form";
 import Menu from "../Menu/Menu";
 
 import burgerMenu from "../../Resources/burger-bar.png";
@@ -13,8 +12,7 @@ export default function Header({
 
 
 	return (
-		<header>
-			<div className="headerRow">
+			<header className="headerRow">
 				<h1>Joe's Student Drinking App</h1>
 				<img
 					src={burgerMenu}
@@ -28,8 +26,6 @@ export default function Header({
 				{/* <button id="addName" onClick={handleShowForm}>
 					Add item
 				</button> */}
-			</div>
-
-		</header>
+			</header>
 	);
 }

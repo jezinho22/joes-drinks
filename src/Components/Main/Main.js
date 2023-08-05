@@ -63,11 +63,15 @@ export default function Main({handleShowForm, showForm}) {
 		// this may not work - reset form or directly use set state here
 		handleShowForm("close")
 		callSetStateForm()
+		// moved submit from button to form to allow this reset
+		event.target.reset()
+		const viewCards = document.querySelector('#drink-cards')
+		viewCards.scrollIntoView({ behavior: 'smooth', block: 'center' })
+
+
 	}
 
 	return (
-
-
 		<div className = "Main">
 			<AboutApp/>
 			<AboutDrink/>
@@ -78,14 +82,13 @@ export default function Main({handleShowForm, showForm}) {
 					form={form}
 					showForm={showForm}
 					handleShowForm={handleShowForm}></Form>
-				
-
+			<div id="drink-cards"></div>
 			<div className="buttons">
 				<button id="sortPricePerUnit">Sort by price per unit</button>
 				<button id="sortPrice">Sort by price</button>
 				<button className="sortAlpha">Sort by name</button>
 			</div>
-			<div id="drink-cards">
+			<div className="cards-container">
 				{cards.map((card, index) => (
 					<Card cardData={card} key={index}/>
 				))}
