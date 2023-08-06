@@ -5,7 +5,7 @@
 	text-align: right;
 }
 form {
-	transition: width 1s;
+	transition: width 0.4s;
 	overflow-x: hidden;
 	z-index: 1;
 	height: 75vh;

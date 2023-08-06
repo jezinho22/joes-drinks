@@ -28,7 +28,6 @@ function App() {
 				handleShowMenu={handleShowMenu}
 				showMenu={showMenu}
 				handleShowForm={handleShowForm}
-				
 			/>
 			<Main 
 				handleShowForm = {handleShowForm}
