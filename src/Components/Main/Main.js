@@ -4,6 +4,7 @@ import AboutDrink from "../About/AboutDrink";
 import Form from "../Form/Form";
 
 import { useState, useEffect } from "react";
+import useLocalStorage from "use-local-storage";
 
 export default function Main({handleShowForm, showForm}) {
 
@@ -17,34 +18,34 @@ export default function Main({handleShowForm, showForm}) {
 		pricePerUnit:""
 	});
 
-	const [cards, setCards] = useState([
+	// const [cards, setCards] = useState();
+
+	const [cards, setCards] = useLocalStorage("localCards",[
 		{
 			drinkItem: "Aldi pinot grigio",
 			volume: 750,
 			alcohol: 11.5,
 			price: 3.99,
-			units: 11.5*750/1000
+			units: 8.6,
+			pricePerUnit: 0.46
 		},
 		{
 			drinkItem: "Stella Artois",
 			volume: 2272,
 			alcohol: 4.6,
 			price: 5.75,
-			units: 4.6*2272/1000
-
+			units: 10.5,
+			pricePerUnit: 0.55
 		},
-	]);
+	])
 
-	// useEffect only runs on page load - or on something specified in second argument
-	useEffect(() => {
-		// check local storage for cards
-		console.log(cards)
-		const localCards = localStorage.getItem("localCards");
-		if (localCards) {
-			setCards(JSON.parse(localCards));
-		}  
-	}, []);
-
+	// useEffect(() => {
+	//   let x = [...cards]
+	//   x.forEach((card)=> {
+	// 	return {...card, units:alcoholUnits(card),pricePerUnit:pricePerUnit(card)}
+	// 	})
+	// }, [])
+	
 	// ### calculations for card values ### 
 	function alcoholUnits(newCard) {
 		console.log("units")
@@ -55,21 +56,19 @@ export default function Main({handleShowForm, showForm}) {
 	}
 
 	// reset form state  - is this really needed? won't reset form reset this as well?
-	// function callSetStateForm() {
-	// 	setForm({
-	// 		drinkItem: "",
-	// 		volume: "",
-	// 		alcohol: "",
-	// 		price: "",
-	// 	});
-	// }
+	function callSetStateForm() {
+		setForm({
+			drinkItem: "",
+			volume: "",
+			alcohol: "",
+			price: "",
+		});
+	}
 	// updating form inputs
 	function handleChange(event) {
 		const newForm = { ...form, [event.target.name]: event.target.value };
-		const units = alcoholUnits(newForm)
-		const pricePerUnit = pricePerUnit(newForm)
-
-		setForm({ ...newForm, units: units, pricePerUnit:pricePerUnit});
+		console.log(newForm)
+		setForm({ ...newForm});
 	}
 
 	// submit button for form
@@ -77,9 +76,9 @@ export default function Main({handleShowForm, showForm}) {
 		event.preventDefault();
 		// make form into a new card and add to cards
 		// add calculations to it
-		// let tempForm = {...form, units:alcoholUnits(form),pricePerUnit:pricePerUnit(form)}
+		let tempForm = {...form, units:alcoholUnits(form),pricePerUnit:pricePerUnit(form)}
 		// need units to then do pintEquivalent
-		setCards([...cards, {...form}]);
+		setCards([...cards, {...tempForm}]);
 
 		closeForm();
 
@@ -91,19 +90,19 @@ export default function Main({handleShowForm, showForm}) {
 	function closeForm(){
 		// this may not work - reset form or directly use set state here
 		handleShowForm("close")
-		// callSetStateForm()
+		callSetStateForm()
 		// scroll down to view cards
 		const viewCards = document.querySelector('#drink-cards')
 		viewCards.scrollIntoView({ behavior: 'smooth', block: 'center' })
 		// update local storage with new card
 		console.log(cards)
-		localStorage.setItem('localCards',JSON.stringify(cards))
+		// localStorage.setItem('localCards',JSON.stringify(cards))
 	}
 
 	function handleSort(sortBy){
 		console.log(sortBy)
 		let sorted = [...cards]
-		if (sortBy == "drinkItem"){
+		if (sortBy === "drinkItem"){
 			setCards(alphaSort(sorted))
 		} else {
 			sorted.sort((a, b)=> a[sortBy] - b[sortBy])
