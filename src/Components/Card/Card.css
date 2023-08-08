@@ -38,11 +38,11 @@
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items:flex-end;
+	padding:0.5rem 0;
 }
 .pints img {
 	width: 24px;
 	object-fit: cover;
 	object-position: center bottom;
-	margin: 1rem 0;
 	
 }
