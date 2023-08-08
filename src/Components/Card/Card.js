@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import pintPot from "../../Resources/pint.png";
 
-export default function Card({ cardData, cardIndex }) {
+export default function Card({ cardData, cardIndex, handleDelete }) {
 const [pints, setPints] = useState(equivalentPints(cardData))
 
 	function equivalentPints(newCard) {
@@ -45,5 +45,6 @@ const [pints, setPints] = useState(equivalentPints(cardData))
 				
 				<img src={pintPot} alt={item.alt} key={index} style={{ height : item.height }}/> ))}
 			</div>
+			<p onClick={()=>handleDelete(cardData.drinkItem)}>Delete</p>
 		</div>
 	)}
