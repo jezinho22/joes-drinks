@@ -23,12 +23,15 @@ export default function Main({handleShowForm, showForm}) {
 			volume: 750,
 			alcohol: 11.5,
 			price: 3.99,
+			units: 11.5*750/1000
 		},
 		{
 			drinkItem: "Stella Artois",
 			volume: 2272,
 			alcohol: 4.6,
 			price: 5.75,
+			units: 4.6*2272/1000
+
 		},
 	]);
 
@@ -36,23 +39,12 @@ export default function Main({handleShowForm, showForm}) {
 	useEffect(() => {
 		// check local storage for cards
 		console.log(cards)
-		const localCards = localStorage.getItem("drinksStorage");
+		const localCards = localStorage.getItem("localCards");
 		if (localCards) {
 			setCards(JSON.parse(localCards));
-		}  else {
-			setCards(addCalculatedValues())
-
-			localStorage.setItem('localCards', JSON.stringify(cards))
-
-		}
+		}  
 	}, []);
 
-	function addCalculatedValues(){
-		let newOnes = cards.map(card => {
-			return {...card, units:alcoholUnits(card), pricePerUnit:pricePerUnit(card), pintEquivalent:equivalentPints(card)}
-		})
-		return newOnes
-	}
 	// ### calculations for card values ### 
 	function alcoholUnits(newCard) {
 		console.log("units")
@@ -61,42 +53,23 @@ export default function Main({handleShowForm, showForm}) {
 	function pricePerUnit(newCard){
 		return (newCard.price / ((newCard.volume * newCard.alcohol) / 1000)).toFixed(2)
 	}
-	function equivalentPints(newCard) {
-		// create an array of image attributes to display
-		let pintsArray = []
-		// work out whole pints
-		let pints = Math.floor(newCard.units / 2.2);
-		for (let i = 0; i < pints; i++) {
-			pintsArray.push({
-				src: "../Resources/pint.png",
-				alt: "pint-glass",
-				height: 24,
-			});
-		}
-		// work out remainder as proportion of 24px-high pint
-		const pintHeight = 24;
-		let partPint = (pintHeight * (newCard.units % 2.2)) / 2.2;
-		pintsArray.push({
-			  src: "../Resources/pint.png", 
-			  alt: "pint-glass", 
-			  height: `${partPint}px` 
-			});
-		return pintsArray
-	}
 
 	// reset form state  - is this really needed? won't reset form reset this as well?
-	function callSetStateForm() {
-		setForm({
-			drinkItem: "",
-			volume: "",
-			alcohol: "",
-			price: "",
-		});
-	}
+	// function callSetStateForm() {
+	// 	setForm({
+	// 		drinkItem: "",
+	// 		volume: "",
+	// 		alcohol: "",
+	// 		price: "",
+	// 	});
+	// }
 	// updating form inputs
 	function handleChange(event) {
 		const newForm = { ...form, [event.target.name]: event.target.value };
-		setForm(newForm);
+		const units = alcoholUnits(newForm)
+		const pricePerUnit = pricePerUnit(newForm)
+
+		setForm({ ...newForm, units: units, pricePerUnit:pricePerUnit});
 	}
 
 	// submit button for form
@@ -104,17 +77,17 @@ export default function Main({handleShowForm, showForm}) {
 		event.preventDefault();
 		// make form into a new card and add to cards
 		// add calculations to it
-		let tempForm = {...form, units:alcoholUnits(form),pricePerUnit:pricePerUnit(form)}
-		let pintsEquivalent = equivalentPints(form)
+		// let tempForm = {...form, units:alcoholUnits(form),pricePerUnit:pricePerUnit(form)}
 		// need units to then do pintEquivalent
-		setCards([...cards, {...tempForm, pintEquivalent:pintsEquivalent}]);
+		setCards([...cards, {...form}]);
 
 		closeForm();
 
 		// reset form
 		event.target.reset();
-
+		console.log(cards)
 	}
+
 	function closeForm(){
 		// this may not work - reset form or directly use set state here
 		handleShowForm("close")
@@ -123,6 +96,8 @@ export default function Main({handleShowForm, showForm}) {
 		const viewCards = document.querySelector('#drink-cards')
 		viewCards.scrollIntoView({ behavior: 'smooth', block: 'center' })
 		// update local storage with new card
+		console.log(cards)
+		localStorage.setItem('localCards',JSON.stringify(cards))
 	}
 
 	function handleSort(sortBy){
