@@ -3,7 +3,7 @@ import AboutApp from "../About/AboutApp";
 import AboutDrink from "../About/AboutDrink";
 import Form from "../Form/Form";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import useLocalStorage from "use-local-storage";
 
 export default function Main({handleShowForm, showForm}) {
@@ -38,13 +38,6 @@ export default function Main({handleShowForm, showForm}) {
 			pricePerUnit: 0.55
 		},
 	])
-
-	// useEffect(() => {
-	//   let x = [...cards]
-	//   x.forEach((card)=> {
-	// 	return {...card, units:alcoholUnits(card),pricePerUnit:pricePerUnit(card)}
-	// 	})
-	// }, [])
 	
 	// ### calculations for card values ### 
 	function alcoholUnits(newCard) {
@@ -94,9 +87,7 @@ export default function Main({handleShowForm, showForm}) {
 		// scroll down to view cards
 		const viewCards = document.querySelector('#drink-cards')
 		viewCards.scrollIntoView({ behavior: 'smooth', block: 'center' })
-		// update local storage with new card
-		console.log(cards)
-		// localStorage.setItem('localCards',JSON.stringify(cards))
+
 	}
 
 	function handleSort(sortBy){
@@ -125,6 +116,14 @@ export default function Main({handleShowForm, showForm}) {
 		  });
 		return array
 	}
+
+	const handleDelete = (cardName)=> {
+		let tempCards = [...cards]
+		const index = tempCards.findIndex((i) => i.drinkItem === cardName)
+		tempCards.splice(index, 1);
+		setCards(tempCards)
+	}
+
 	return (
 		<div className = "Main">
 			<AboutApp/>
@@ -143,7 +142,7 @@ export default function Main({handleShowForm, showForm}) {
 			</div>
 			<div className="cards-container">
 				{cards.map((card, index) => (
-					<Card cardData={card} key={index}/>
+					<Card cardData={card} key={index} handleDelete={handleDelete}/>
 				))}
 			</div>
 		</div>
