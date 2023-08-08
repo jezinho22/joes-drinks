@@ -15,7 +15,9 @@ export default function Main({handleShowForm, showForm}) {
 		alcohol: "",
 		price: "",
 		units:"",
-		pricePerUnit:""
+		pricePerUnit:"",
+		multiCount: "",
+		multiVolume:""
 	});
 
 	// const [cards, setCards] = useState();
@@ -55,11 +57,20 @@ export default function Main({handleShowForm, showForm}) {
 			volume: "",
 			alcohol: "",
 			price: "",
+			units:"",
+			pricePerUnit:"",
+			multiCount: "",
+			multiVolume:""
 		});
 	}
 	// updating form inputs
 	function handleChange(event) {
 		const newForm = { ...form, [event.target.name]: event.target.value };
+		if (form.multiCount && form.multiVolume){
+			let x = form.multiCount && form.multiVolume;
+			console.log(x)
+			newForm = {...newForm, volume:x}
+		}
 		console.log(newForm)
 		setForm({ ...newForm});
 	}
