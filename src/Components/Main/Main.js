@@ -20,6 +20,13 @@ export default function Main({handleShowForm, showForm}) {
 		multiVolume:""
 	});
 
+		//enable form to display multipack as volume
+		const [multipack, setMultipack] = useState(false);
+		// display additional form inputs
+		function handleMultipack() {
+			setMultipack(!multipack);
+		}
+
 	// const [cards, setCards] = useState();
 
 	const [cards, setCards] = useLocalStorage("localCards",[
@@ -83,7 +90,7 @@ export default function Main({handleShowForm, showForm}) {
 		let tempForm = {...form, units:alcoholUnits(form),pricePerUnit:pricePerUnit(form)}
 		// need units to then do pintEquivalent
 		setCards([...cards, {...tempForm}]);
-
+		setMultipack(!multipack)
 		closeForm();
 
 		// reset form
@@ -144,7 +151,11 @@ export default function Main({handleShowForm, showForm}) {
 					handleChange={handleChange}
 					form={form}
 					showForm={showForm}
-					handleShowForm={handleShowForm}></Form>
+					handleShowForm={handleShowForm}
+					handleMultipack={handleMultipack}
+					multipack={multipack}>
+						
+					</Form>
 			<div id="drink-cards"></div>
 			<div className="buttons">
 				<button id="sortPricePerUnit" onClick={()=>handleSort('pricePerUnit')}>Sort by price per unit</button>
