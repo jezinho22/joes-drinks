@@ -15,11 +15,8 @@ export default function Form({
 
 	return (
 		<form className={showForm} onSubmit={handleSubmit} >
-			<div className="closeForm" onClick={()=>handleShowForm("close")}>
-				X
-			</div>
-			<fieldset>
-				<legend>Input your item</legend>
+			<p><span>Input your item</span><span className="closeForm" onClick={()=>handleShowForm("close")}>X</span></p>
+				
 				<label htmlFor="drinkItem">Item name:</label>
 				<input
 					type="text"
@@ -87,7 +84,6 @@ export default function Form({
 				)}
 				
 				<button type="submit">Submit</button>
-			</fieldset>
 		</form>
 	);
 }

@@ -33,18 +33,20 @@ const [pints, setPints] = useState(equivalentPints(cardData))
 	return (
 		<div className="card" key={cardIndex}>
 			<h2 className="cardHead">{cardData.drinkItem}</h2>
-			<h3>£{cardData.price}</h3>
-			<p>Volume: {cardData.volume} ml</p>
-			<p>Alcohol {cardData.alcohol} %</p>
 
-			<h4>Units: {cardData.units} units</h4>
-			<h4>Price per unit: {cardData.pricePerUnit}</h4>
+			<h3>£{cardData.price}</h3>
+			<div className="cardInfo">
+			<p><span>Volume:</span>{cardData.volume} ml</p>
+			<p><span>Alcohol: </span>{cardData.alcohol} %</p>
+			<p>{cardData.units} units</p>
+			<p>{cardData.pricePerUnit} per unit</p>
+			</div>
 
 			<div className = 'pints'>
 			{pints.map((item, index) => (
 				
 				<img src={pintPot} alt={item.alt} key={index} style={{ height : item.height }}/> ))}
 			</div>
-			<p onClick={()=>handleDelete(cardData.drinkItem)}>Delete</p>
+			<button onClick={()=>handleDelete(cardData.drinkItem)}>Delete</button>
 		</div>
 	)}
