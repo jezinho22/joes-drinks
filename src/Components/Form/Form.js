@@ -7,14 +7,11 @@ export default function Form({
 	handleChange,
 	form,
 	handleShowForm,
-	showForm
+	showForm,
+	multipack,
+	handleMultipack
 }) {
-	//enable form to display multipack as volume
-	const [multipack, setMultipack] = useState(false);
-	// display additional form inputs
-	function handleMultipack() {
-		setMultipack(!multipack);
-	}
+
 
 	return (
 		<form className={showForm} onSubmit={handleSubmit} >
