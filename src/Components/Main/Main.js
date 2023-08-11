@@ -72,10 +72,10 @@ export default function Main({handleShowForm, showForm}) {
 	}
 	// updating form inputs
 	function handleChange(event) {
-		const newForm = { ...form, [event.target.name]: event.target.value };
-		if (form.multiCount && form.multiVolume){
-			let x = form.multiCount && form.multiVolume;
-			console.log(x)
+		let newForm = { ...form, [event.target.name]: event.target.value };
+		if (newForm.multiCount && newForm.multiVolume){
+			let x = newForm.multiCount * newForm.multiVolume;
+			console.log(x + " is the total volume")
 			newForm = {...newForm, volume:x}
 		}
 		console.log(newForm)
@@ -90,8 +90,8 @@ export default function Main({handleShowForm, showForm}) {
 		let tempForm = {...form, units:alcoholUnits(form),pricePerUnit:pricePerUnit(form)}
 		// need units to then do pintEquivalent
 		setCards([...cards, {...tempForm}]);
-		setMultipack(!multipack)
-		closeForm();
+		setMultipack(false)
+		closeForm(event);
 
 		// reset form
 		event.target.reset();
