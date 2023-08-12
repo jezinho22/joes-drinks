@@ -49,14 +49,15 @@ p {
 }
 
 .buttons button {
-	width: 150px;
-	height: 3rem;
+	max-width: 150px;
+	min-height: 3rem;
 	background-color: #f8ee2c;
 	color:#b83b94;
 	border-radius: 5px;
 	font-size: 1.2rem;
 	border:none;
 	box-shadow: 2px 2px 3px rgb(100, 5, 5);
+	padding: 5px;
 }
 
 
@@ -75,18 +76,23 @@ footer h3 {
 	padding: 1.5rem;
 }
 
-@media (max-width: 360px) {
+@media (max-width: 475px) {
 
 	.buttons button {
 		width: 120px;
-		height: 3rem;
+		min-height: 4rem;
 		margin: 0 0.5rem;
 		background-color: #f8ee2c;
 		color:#b83b94;
 		border-radius: 5px;
-		font-size: 0.8rem;
+		font-size: 0.9rem;
 		border:none;
 		box-shadow: 2px 2px 3px rgb(100, 5, 5);
 	}
 
+}
+@media (max-width: 600px) {
+	.buttons button{
+		font-size: 1rem;
+	};
 }
