@@ -4,6 +4,7 @@
 	font-size: 2rem;
 	text-align: right;
 }
+
 form {
 	transition: width 0.4s;
 	overflow-x: hidden;
@@ -25,24 +26,32 @@ form.close{
 form.close *{
 	visibility: hidden;
 }
-
-legend {
-	/* margin: 10px; */
-	font-weight: 700;;
-}
-fieldset {
+form
+.inputsContainer {
 	display: flex;
 	flex-direction: column;
-	max-width: 400px;
-	margin: 1rem auto;
 	padding: 1rem;
+	width: 300px;
+	margin: auto;
 }
-fieldset input {
+.inputsContainer p:first-child {
+	font-size: 1.25rem;
+	margin-bottom: 1rem;
+}
+input {
 	margin: 0.25rem 0.5rem 0.5rem;
 	line-height: 1.5rem;
-	max-width: 200px;
+	max-width: 250px;
 }
-
+fieldset {
+	
+	display: flex;
+	flex-direction: column;
+	padding: 0 1rem;	
+}
+fieldset input {
+	max-width: 50px;
+}
 .checkBox {
 	display: flex;
 	flex-direction: rows;
@@ -51,18 +60,29 @@ fieldset input {
 	padding: 0.5rem 0;
 	width: 200px;
 }
-fieldset button {
-	width: 150px;
+form button {
+	width: 100px;
 	align-self: center;
 	background-color: #e86c34;
 	color: #f8ee2c;
 	border-radius: 3px;
-	font-size: 1.2rem;
+	font-size: 1rem;
+	padding: 0.25rem;
+	margin: 0 0.25rem;
 }
 
-@media (max-width: 420px) {
+.buttonContainer {
+	display: flex;
+	flex-direction: row;
+	
+}
+
+@media (max-width: 425px) {
 	form.open {
-		width: 300px;
+		width: 100vw;
+	}
+	.inputsContainer {
+		max-width: 250px;
 	}
 
 }

@@ -15,8 +15,9 @@ export default function Form({
 
 	return (
 		<form className={showForm} onSubmit={handleSubmit} >
-			<p><span>Input your item</span><span className="closeForm" onClick={()=>handleShowForm("close")}>X</span></p>
-				
+			<div className="innerForm">
+				<div className="inputsContainer">
+				<p>Input your item</p>
 				<label htmlFor="drinkItem">Item name:</label>
 				<input
 					type="text"
@@ -51,8 +52,7 @@ export default function Form({
 						className = {multipack ? "greyed-out" : "live"}
 						disabled = {multipack}
 						onChange={handleChange}
-					/>
-				
+					/>				
 				<div className="checkBox">
 					<label htmlFor="multipack">Is it a multi pack?</label>
 					<input
@@ -64,8 +64,9 @@ export default function Form({
 					/>
 				</div>
 				{multipack && (
-					<fieldset>
-						<legend>Multipack</legend>
+					<fieldset>				
+						<label htmlFor="multiCount">Number in pack</label>
+
 						<input
 							className="multipack"
 							name="multiCount"
@@ -73,17 +74,23 @@ export default function Form({
 							placeholder="Number in pack"
 							onChange={handleChange}
 						/>
+						<label htmlFor="multiVolume">Volume of one item</label>
+
 						<input
 							className="multipack"
 							name="multiVolume"
 							id="multiVolume"
-							placeholder="Volume (ml) of one item"
+							// placeholder="Volume (ml) of one item"
 							onChange={handleChange}
 						/>
 					</fieldset>
 				)}
-				
-				<button type="submit">Submit</button>
+					<div className="buttonContainer">
+						<button type="submit">Submit</button>
+						<button onClick={()=>handleShowForm("close")} >Cancel</button>
+					</div>
+				</div>
+			</div>
 		</form>
 	);
 }
