@@ -23,8 +23,9 @@ export default function Main({handleShowForm, showForm}) {
 		//enable form to display multipack as volume
 		const [multipack, setMultipack] = useState(false);
 		// display additional form inputs
-		function handleMultipack() {
-			setMultipack(!multipack);
+		function handleMultipack(event) {
+			setMultipack(event.target.checked);
+			console.log(event.target.checked)
 		}
 
 	// const [cards, setCards] = useState();
@@ -96,6 +97,8 @@ export default function Main({handleShowForm, showForm}) {
 		// reset form
 		event.target.reset();
 		console.log(cards)
+		const viewCards = document.querySelector('#drink-cards')
+		viewCards.scrollIntoView({ behavior: 'instant', block: 'start' })
 	}
 
 	function closeForm(){
@@ -103,8 +106,7 @@ export default function Main({handleShowForm, showForm}) {
 		handleShowForm("close")
 		callSetStateForm()
 		// scroll down to view cards
-		const viewCards = document.querySelector('#drink-cards')
-		viewCards.scrollIntoView({ behavior: 'smooth', block: 'center' })
+
 
 	}
 

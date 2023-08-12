@@ -1,6 +1,5 @@
 import "./Form.css";
 
-import { useState} from "react";
 
 export default function Form({
 	handleSubmit,
@@ -71,7 +70,7 @@ export default function Form({
 							className="multipack"
 							name="multiCount"
 							id="multiCount"
-							placeholder="Number in pack"
+							// placeholder="Number in pack"
 							onChange={handleChange}
 						/>
 						<label htmlFor="multiVolume">Volume of one item</label>
