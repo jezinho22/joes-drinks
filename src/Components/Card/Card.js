@@ -1,10 +1,13 @@
 import "./Card.css"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import pintPot from "../../Resources/pint.png";
 
 export default function Card({ cardData, cardIndex, handleDelete }) {
 const [pints, setPints] = useState(equivalentPints(cardData))
+useEffect(() => {
+	setPints(equivalentPints(cardData))
+}, [cardData])
 
 	function equivalentPints(newCard) {
 		// create an array of image attributes to display
