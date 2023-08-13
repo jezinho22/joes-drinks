@@ -25,7 +25,6 @@ export default function Main({handleShowForm, showForm}) {
 		// display additional form inputs
 		function handleMultipack(event) {
 			setMultipack(event.target.checked);
-			console.log(event.target.checked)
 		}
 
 	// const [cards, setCards] = useState();
@@ -51,7 +50,6 @@ export default function Main({handleShowForm, showForm}) {
 	
 	// ### calculations for card values ### 
 	function alcoholUnits(newCard) {
-		console.log("units")
 		return ((newCard.volume * newCard.alcohol) / 1000).toFixed(1);
 	}
 	function pricePerUnit(newCard){
@@ -76,10 +74,8 @@ export default function Main({handleShowForm, showForm}) {
 		let newForm = { ...form, [event.target.name]: event.target.value };
 		if (newForm.multiCount && newForm.multiVolume){
 			let x = newForm.multiCount * newForm.multiVolume;
-			console.log(x + " is the total volume")
 			newForm = {...newForm, volume:x}
 		}
-		console.log(newForm)
 		setForm({ ...newForm});
 	}
 
@@ -96,7 +92,6 @@ export default function Main({handleShowForm, showForm}) {
 
 		// reset form
 		event.target.reset();
-		console.log(cards)
 		const viewCards = document.querySelector('#drink-cards')
 		viewCards.scrollIntoView({ behavior: 'instant', block: 'start' })
 	}
@@ -111,7 +106,6 @@ export default function Main({handleShowForm, showForm}) {
 	}
 
 	function handleSort(sortBy){
-		console.log(sortBy)
 		let sorted = [...cards]
 		if (sortBy === "drinkItem"){
 			setCards(alphaSort(sorted))

@@ -13,7 +13,7 @@ function App() {
 		const [showMenu, setShowMenu] = useState("menu-close");
 
 	function handleShowForm(action) {
-		console.log(action)
+		console.log("close form " + action)
 		setshowForm(action);
 
 	}	
