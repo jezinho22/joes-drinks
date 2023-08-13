@@ -59,7 +59,7 @@ export default function Form({
 						id="multipack"
 						name="multipack"
 						value="multipack"
-						onChange={handleMultipack}
+						onChange={()=>handleMultipack()}
 					/>
 				</div>
 				{multipack && (
@@ -86,7 +86,7 @@ export default function Form({
 				)}
 					<div className="buttonContainer">
 						<button type="submit">Submit</button>
-						<button onClick={()=>handleShowForm("close")} >Cancel</button>
+						<button type="button" onClick={()=>handleShowForm("close")} >Cancel</button>
 					</div>
 				</div>
 			</div>
