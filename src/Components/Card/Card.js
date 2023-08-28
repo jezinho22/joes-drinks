@@ -68,32 +68,6 @@ export default function Card({
 		return imageArray;
 	}
 
-	// function equivalentPints(newCard) {
-	// 	// create an array of image attributes to display
-	// 	let pintsArray = [];
-	// 	const pintHeight = 64;
-
-	// 	// work out whole drinks
-	// 	let drinks = Math.floor(newCard.units / 2.2);
-	// 	for (let i = 0; i < drinks; i++) {
-	// 		pintsArray.push({
-	// 			// src: "../Resources/pint.png",
-	// 			alt: "pint-glass",
-	// 			height: pintHeight,
-	// 			width: pintHeight,
-	// 		});
-	// 	}
-	// 	// work out remainder as proportion of 24px-high pint
-	// 	let partPint = (pintHeight * (newCard.units % 2.2)) / 2.2;
-	// 	pintsArray.push({
-	// 		//   src: "../Resources/pint.png",
-	// 		alt: "pint-glass",
-	// 		height: `${partPint}px`,
-	// 		width: pintHeight,
-	// 	});
-	// 	return pintsArray;
-	// }
-
 	return (
 		<div className="card" key={cardIndex}>
 			<h2 className="cardHead">{cardData.drinkItem}</h2>
