@@ -1,0 +1,47 @@
+.options {
+	margin-top: 120px;
+	display: flex;
+	justify-content: center;
+}
+.options label {
+	font-size: 1.25rem;
+	margin: 0 2rem;
+	line-height: 2rem;
+}
+.options select {
+	display: flex;
+	max-width: 150px;
+	min-height: 3rem;
+	background-color: #f8ee2c;
+	color: #b83b94;
+	border-radius: 5px;
+	font-size: 1.2rem;
+	border: none;
+	box-shadow: 2px 2px 3px rgb(100, 5, 5);
+	padding: 5px;
+}
+
+.cards-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+@media (max-width: 475px) {
+	.options select {
+		width: 120px;
+		min-height: 4rem;
+		margin: 0 0.5rem;
+		background-color: #f8ee2c;
+		color: #b83b94;
+		border-radius: 5px;
+		font-size: 0.9rem;
+		border: none;
+		box-shadow: 2px 2px 3px rgb(100, 5, 5);
+	}
+}
+@media (max-width: 600px) {
+	.options select {
+		font-size: 1rem;
+	}
+}

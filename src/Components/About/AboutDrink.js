@@ -65,7 +65,7 @@ export default function AboutDrink() {
 				</a>
 			</p>
 			<p className="quote">Find out more:</p>
-			<ul>
+			<ul className="more-info">
 				<li className="find-out-more">
 					<a href="https://www.drugrehab.com/addiction/alcohol/how-long-does-alcohol-stay-in-your-system/#how-long-does-it-take-to-sober-up">
 						How long before I am sober enough to drive?

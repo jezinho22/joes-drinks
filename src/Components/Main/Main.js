@@ -3,6 +3,8 @@ import AboutApp from "../About/AboutApp";
 import AboutDrink from "../About/AboutDrink";
 import Form from "../Form/Form";
 
+import "./Main.css";
+
 import { useState } from "react";
 import useLocalStorage from "use-local-storage";
 
@@ -118,8 +120,9 @@ export default function Main({ handleShowForm, showForm }) {
 		// scroll down to view cards
 	}
 
-	function handleSort(sortBy) {
+	function handleSort(event) {
 		let sorted = [...cards];
+		let sortBy = event.target.value;
 		if (sortBy === "drinkItem") {
 			setCards(alphaSort(sorted));
 		} else {
@@ -164,22 +167,23 @@ export default function Main({ handleShowForm, showForm }) {
 				handleMultipack={handleMultipack}
 				multipack={multipack}></Form>
 			<div id="drink-cards"></div>
-			<div className="buttons">
-				<button
-					id="sortPricePerUnit"
-					onClick={() => handleSort("pricePerUnit")}>
-					Sort by price per unit
-				</button>
-				<button id="sortPrice" onClick={() => handleSort("price")}>
-					Sort by price
-				</button>
-				<button id="sortDrinkItem" onClick={() => handleSort("drinkItem")}>
-					Sort by name
-				</button>
-				<select id="comparison" name="comparison" onChange={handleComparison}>
-					<option value="bottleWine">Bottle of wine</option>
-					<option value="pint">Pint of beer</option>
-				</select>
+			<div className="options">
+				<label for="sort-by">
+					Sort by:
+					<select id="sort-by" name="sort-by" onChange={handleSort}>
+						<option value="drinkItem">Name</option>
+						<option value="pricePerUnit">Price per unit</option>
+						<option value="price">Price</option>
+					</select>
+				</label>
+				<label for="comparison">
+					{" "}
+					Comparison:
+					<select id="comparison" name="comparison" onChange={handleComparison}>
+						<option value="pint">Pint of beer</option>
+						<option value="bottleWine">Bottle of wine</option>
+					</select>
+				</label>
 			</div>
 			<div className="cards-container">
 				{cards.map((card, index) => (
