@@ -1,37 +1,98 @@
-import "./Card.css"
+import "./Card.css";
 import { useState, useEffect } from "react";
 
 import pintPot from "../../Resources/pint.png";
+import wineBottle from "../../Resources/wine-bottle01.png";
 
-export default function Card({ cardData, cardIndex, handleDelete }) {
-const [pints, setPints] = useState(equivalentPints(cardData))
-useEffect(() => {
-	setPints(equivalentPints(cardData))
-}, [cardData])
+export default function Card({
+	cardData,
+	cardIndex,
+	handleDelete,
+	equivalent,
+}) {
+	// array of images to pass to the render
+	const [equivalentArray, setEquivalentArray] = useState(
+		equivalentDrinks(cardData, {
+			image: pintPot,
+			height: 24,
+			alt: "pint icon",
+			units: 2.2,
+		})
+	);
 
-	function equivalentPints(newCard) {
-		// create an array of image attributes to display
-		let pintsArray = []
-		// work out whole pints
-		let pints = Math.floor(newCard.units / 2.2);
-		for (let i = 0; i < pints; i++) {
-			pintsArray.push({
-				src: "../Resources/pint.png",
-				alt: "pint-glass",
-				height: 24,
+	// when equivalent changes ie select drink equivalent
+	// or when card data changes re-render the equivalent images
+	useEffect(() => {
+		if (equivalent === "bottleWine") {
+			const equivalentData = {
+				drinkSrc: wineBottle,
+				drinkAlt: "wine bottle",
+				drinkUnits: 9,
+				drinkHeight: 60,
+			};
+			setEquivalentArray(equivalentDrinks(cardData, equivalentData));
+		} else if (equivalent === "pint") {
+			const equivalentData = {
+				drinkSrc: pintPot,
+				drinkAlt: "pint of beer",
+				drinkUnits: 2.2,
+				drinkHeight: 24,
+			};
+			setEquivalentArray(equivalentDrinks(cardData, equivalentData));
+		}
+	}, [cardData, equivalent]);
+
+	function equivalentDrinks(newCard, equivalentData) {
+		const imageArray = [];
+		// whole drinks
+		const drinks = Math.floor(newCard.units / equivalentData.drinkUnits);
+		for (let i = 0; i < drinks; i++) {
+			imageArray.push({
+				src: equivalentData.drinkSrc,
+				alt: equivalentData.drinkAlt,
+				height: equivalentData.drinkHeight,
+				width: equivalentData.drinkHeight,
 			});
 		}
-		// work out remainder as proportion of 24px-high pint
-		const pintHeight = 24;
-		let partPint = (pintHeight * (newCard.units % 2.2)) / 2.2;
-		pintsArray.push({
-			  src: "../Resources/pint.png", 
-			  alt: "pint-glass", 
-			  height: `${partPint}px` 
-			});
-		return pintsArray
+		// work out remainder as proportion of whole drink
+		const partHeight =
+			(equivalentData.drinkHeight *
+				(newCard.units % equivalentData.drinkUnits)) /
+			equivalentData.drinkUnits;
+		imageArray.push({
+			src: equivalentData.drinkSrc,
+			alt: equivalentData.drinkAlt,
+			height: partHeight, //`${partHeight}px`,
+			width: equivalentData.drinkHeight,
+		});
+		return imageArray;
 	}
 
+	// function equivalentPints(newCard) {
+	// 	// create an array of image attributes to display
+	// 	let pintsArray = [];
+	// 	const pintHeight = 64;
+
+	// 	// work out whole drinks
+	// 	let drinks = Math.floor(newCard.units / 2.2);
+	// 	for (let i = 0; i < drinks; i++) {
+	// 		pintsArray.push({
+	// 			// src: "../Resources/pint.png",
+	// 			alt: "pint-glass",
+	// 			height: pintHeight,
+	// 			width: pintHeight,
+	// 		});
+	// 	}
+	// 	// work out remainder as proportion of 24px-high pint
+	// 	let partPint = (pintHeight * (newCard.units % 2.2)) / 2.2;
+	// 	pintsArray.push({
+	// 		//   src: "../Resources/pint.png",
+	// 		alt: "pint-glass",
+	// 		height: `${partPint}px`,
+	// 		width: pintHeight,
+	// 	});
+	// 	return pintsArray;
+	// }
 
 	return (
 		<div className="card" key={cardIndex}>
@@ -39,17 +100,35 @@ useEffect(() => {
 
 			<h3>£{cardData.price}</h3>
 			<div className="cardInfo">
-			<p><span>Volume:</span>{cardData.volume} ml</p>
-			<p><span>Alcohol: </span>{cardData.alcohol} %</p>
-			<p>{cardData.units} units</p>
-			<p>{cardData.pricePerUnit} per unit</p>
+				<p>
+					<span>Volume:</span>
+					{cardData.volume} ml
+				</p>
+				<p>
+					<span>Alcohol: </span>
+					{cardData.alcohol} %
+				</p>
+				<p>{cardData.units} units</p>
+				<p>{cardData.pricePerUnit} per unit</p>
 			</div>
 
-			<div className = 'pints'>
-			{pints.map((item, index) => (
-				
-				<img src={pintPot} alt={item.alt} key={index} style={{ height : item.height }}/> ))}
+			<div className="drinks">
+				{equivalentArray.map((item, index) => (
+					<img
+						className="equiv"
+						src={item.src}
+						alt={item.alt}
+						key={index}
+						style={{
+							height: item.height,
+							width: item.width,
+							marginLeft: (item.width - 20) / -2,
+							marginRight: (item.width - 20) / -2,
+						}}
+					/>
+				))}
 			</div>
-			<button onClick={()=>handleDelete(cardData.drinkItem)}>Delete</button>
+			<button onClick={() => handleDelete(cardData.drinkItem)}>Delete</button>
 		</div>
-	)}
+	);
+}

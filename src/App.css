@@ -34,6 +34,18 @@ p {
 #source {
 	margin-top: 1rem;
 }
+ul {
+	list-style-type: disc;
+	line-height: 1.25rem;
+}
+ul li {
+	margin-bottom: 1rem;
+}
+ul li a {
+	color: bisque;
+	text-decoration: underline;
+}
+
 .quote {
 	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 	font-size: 1.5rem;
@@ -45,21 +57,19 @@ p {
 	margin-top: 120px;
 	display: flex;
 	justify-content: space-around;
-
 }
 
 .buttons button {
 	max-width: 150px;
 	min-height: 3rem;
 	background-color: #f8ee2c;
-	color:#b83b94;
+	color: #b83b94;
 	border-radius: 5px;
 	font-size: 1.2rem;
-	border:none;
+	border: none;
 	box-shadow: 2px 2px 3px rgb(100, 5, 5);
 	padding: 5px;
 }
-
 
 .cards-container {
 	display: flex;
@@ -68,7 +78,7 @@ p {
 }
 
 footer {
-	background-color:#b83b94;
+	background-color: #b83b94;
 }
 footer h3 {
 	text-align: center;
@@ -77,22 +87,20 @@ footer h3 {
 }
 
 @media (max-width: 475px) {
-
 	.buttons button {
 		width: 120px;
 		min-height: 4rem;
 		margin: 0 0.5rem;
 		background-color: #f8ee2c;
-		color:#b83b94;
+		color: #b83b94;
 		border-radius: 5px;
 		font-size: 0.9rem;
-		border:none;
+		border: none;
 		box-shadow: 2px 2px 3px rgb(100, 5, 5);
 	}
-
 }
 @media (max-width: 600px) {
-	.buttons button{
+	.buttons button {
 		font-size: 1rem;
-	};
+	}
 }
