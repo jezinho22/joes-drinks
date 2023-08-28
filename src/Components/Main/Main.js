@@ -124,6 +124,9 @@ export default function Main({ handleShowForm, showForm }) {
 		let sortBy = event.target.value;
 		if (sortBy === "drinkItem") {
 			setCards(alphaSort(sorted));
+		} else if (sortBy === "rating") {
+			sorted.sort((a, b) => b[sortBy] - a[sortBy]);
+			setCards(sorted);
 		} else {
 			sorted.sort((a, b) => a[sortBy] - b[sortBy]);
 			setCards(sorted);
@@ -181,6 +184,7 @@ export default function Main({ handleShowForm, showForm }) {
 						<option value="drinkItem">Name</option>
 						<option value="pricePerUnit">Price per unit</option>
 						<option value="price">Price</option>
+						<option value="rating">Rating</option>
 					</select>
 				</label>
 				<label htmlFor="comparison">
