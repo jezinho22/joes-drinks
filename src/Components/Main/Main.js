@@ -6,54 +6,65 @@ import Form from "../Form/Form";
 import { useState } from "react";
 import useLocalStorage from "use-local-storage";
 
-export default function Main({handleShowForm, showForm}) {
-
+export default function Main({ handleShowForm, showForm }) {
 	// localStorage.clear();
 	const [form, setForm] = useState({
 		drinkItem: "",
 		volume: "",
 		alcohol: "",
 		price: "",
-		units:"",
-		pricePerUnit:"",
+		units: "",
+		pricePerUnit: "",
 		multiCount: "",
-		multiVolume:""
+		multiVolume: "",
 	});
 
-		//enable form to display multipack as volume
-		const [multipack, setMultipack] = useState(false);
-		// display additional form inputs
-		function handleMultipack(event) {
-			setMultipack(event.target.checked);
-		}
+	//enable form to display multipack as volume
+	const [multipack, setMultipack] = useState(false);
+	// enable cards to display chosen equivalent
+	const [equivalent, setEquivalent] = useState("pint");
+	// display additional form inputs
+	function handleMultipack(event) {
+		setMultipack(event.target.checked);
+	}
+
+	//set state for comparison with equivalents
+	function handleComparison(event) {
+		event.preventDefault();
+		setEquivalent(event.target.value);
+		console.log(event.target.value);
+	}
 
 	// const [cards, setCards] = useState();
 
-	const [cards, setCards] = useLocalStorage("localCards",[
+	const [cards, setCards] = useLocalStorage("localCards", [
 		{
 			drinkItem: "Aldi pinot grigio",
 			volume: 750,
 			alcohol: 11.5,
 			price: 3.99,
 			units: 8.6,
-			pricePerUnit: 0.46
+			pricePerUnit: 0.46,
 		},
 		{
 			drinkItem: "Stella Artois",
-			volume: 2272,
+			volume: 1760,
 			alcohol: 4.6,
 			price: 5.75,
 			units: 10.5,
-			pricePerUnit: 0.55
+			pricePerUnit: 0.55,
 		},
-	])
-	
-	// ### calculations for card values ### 
+	]);
+
+	// ### calculations for card values ###
 	function alcoholUnits(newCard) {
 		return ((newCard.volume * newCard.alcohol) / 1000).toFixed(1);
 	}
-	function pricePerUnit(newCard){
-		return (newCard.price / ((newCard.volume * newCard.alcohol) / 1000)).toFixed(2)
+	function pricePerUnit(newCard) {
+		return (
+			newCard.price /
+			((newCard.volume * newCard.alcohol) / 1000)
+		).toFixed(2);
 	}
 
 	// reset form state  - is this really needed? won't reset form reset this as well?
@@ -63,20 +74,20 @@ export default function Main({handleShowForm, showForm}) {
 			volume: "",
 			alcohol: "",
 			price: "",
-			units:"",
-			pricePerUnit:"",
+			units: "",
+			pricePerUnit: "",
 			multiCount: "",
-			multiVolume:""
+			multiVolume: "",
 		});
 	}
 	// updating form inputs
 	function handleChange(event) {
 		let newForm = { ...form, [event.target.name]: event.target.value };
-		if (newForm.multiCount && newForm.multiVolume){
+		if (newForm.multiCount && newForm.multiVolume) {
 			let x = newForm.multiCount * newForm.multiVolume;
-			newForm = {...newForm, volume:x}
+			newForm = { ...newForm, volume: x };
 		}
-		setForm({ ...newForm});
+		setForm({ ...newForm });
 	}
 
 	// submit button for form
@@ -84,83 +95,101 @@ export default function Main({handleShowForm, showForm}) {
 		event.preventDefault();
 		// make form into a new card and add to cards
 		// add calculations to it
-		let tempForm = {...form, units:alcoholUnits(form),pricePerUnit:pricePerUnit(form)}
+		let tempForm = {
+			...form,
+			units: alcoholUnits(form),
+			pricePerUnit: pricePerUnit(form),
+		};
 		// need units to then do pintEquivalent
-		setCards([...cards, {...tempForm}]);
-		setMultipack(false)
+		setCards([...cards, { ...tempForm }]);
+		setMultipack(false);
 		closeForm(event);
 
 		// reset form
 		event.target.reset();
-		const viewCards = document.querySelector('#drink-cards')
-		viewCards.scrollIntoView({ behavior: 'instant', block: 'start' })
+		const viewCards = document.querySelector("#drink-cards");
+		viewCards.scrollIntoView({ behavior: "instant", block: "start" });
 	}
 
-	function closeForm(){
+	function closeForm() {
 		// this may not work - reset form or directly use set state here
-		handleShowForm("close")
-		callSetStateForm()
+		handleShowForm("close");
+		callSetStateForm();
 		// scroll down to view cards
-
-
 	}
 
-	function handleSort(sortBy){
-		let sorted = [...cards]
-		if (sortBy === "drinkItem"){
-			setCards(alphaSort(sorted))
+	function handleSort(sortBy) {
+		let sorted = [...cards];
+		if (sortBy === "drinkItem") {
+			setCards(alphaSort(sorted));
 		} else {
-			sorted.sort((a, b)=> a[sortBy] - b[sortBy])
-		setCards(sorted)		
+			sorted.sort((a, b) => a[sortBy] - b[sortBy]);
+			setCards(sorted);
 		}
 	}
 
-	function alphaSort(array){
+	function alphaSort(array) {
 		array.sort((a, b) => {
 			const nameA = a.drinkItem.toUpperCase(); // ignore upper and lowercase
 			const nameB = b.drinkItem.toUpperCase(); // ignore upper and lowercase
 			if (nameA < nameB) {
-			  return -1;
+				return -1;
 			}
 			if (nameA > nameB) {
-			  return 1;
+				return 1;
 			}
 			// names must be equal
 			return 0;
-		  });
-		return array
+		});
+		return array;
 	}
 
-	const handleDelete = (cardName)=> {
-		let tempCards = [...cards]
-		const index = tempCards.findIndex((i) => i.drinkItem === cardName)
+	const handleDelete = (cardName) => {
+		let tempCards = [...cards];
+		const index = tempCards.findIndex((i) => i.drinkItem === cardName);
 		tempCards.splice(index, 1);
-		setCards(tempCards)
-	}
+		setCards(tempCards);
+	};
 
 	return (
-		<div className = "Main">
-			<AboutApp/>
-			<AboutDrink/>
+		<div className="Main">
+			<AboutApp />
+			<AboutDrink />
 			<Form
-					handleSubmit={handleSubmit}
-					handleChange={handleChange}
-					form={form}
-					showForm={showForm}
-					handleShowForm={handleShowForm}
-					handleMultipack={handleMultipack}
-					multipack={multipack}>
-						
-					</Form>
+				handleSubmit={handleSubmit}
+				handleChange={handleChange}
+				form={form}
+				showForm={showForm}
+				handleShowForm={handleShowForm}
+				handleMultipack={handleMultipack}
+				multipack={multipack}></Form>
 			<div id="drink-cards"></div>
 			<div className="buttons">
-				<button id="sortPricePerUnit" onClick={()=>handleSort('pricePerUnit')}>Sort by price per unit</button>
-				<button id="sortPrice" onClick={()=>handleSort('price')}>Sort by price</button>
-				<button id="sortDrinkItem" onClick={()=>handleSort('drinkItem')}>Sort by name</button>
+				<button
+					id="sortPricePerUnit"
+					onClick={() => handleSort("pricePerUnit")}>
+					Sort by price per unit
+				</button>
+				<button id="sortPrice" onClick={() => handleSort("price")}>
+					Sort by price
+				</button>
+				<button id="sortDrinkItem" onClick={() => handleSort("drinkItem")}>
+					Sort by name
+				</button>
+				<select id="comparison" name="comparison" onChange={handleComparison}>
+					<option value="bottleWine">Bottle of wine</option>
+					<option value="pint">Pint of beer</option>
+				</select>
 			</div>
 			<div className="cards-container">
 				{cards.map((card, index) => (
-					<Card cardData={card} key={index} handleDelete={handleDelete}/>
+					<Card
+						cardData={card}
+						key={index}
+						handleDelete={handleDelete}
+						handleComparison={handleComparison}
+						equivalent={equivalent}
+					/>
 				))}
 			</div>
 		</div>
