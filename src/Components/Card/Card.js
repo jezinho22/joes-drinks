@@ -1,3 +1,5 @@
+import Rating from "../Rating/Rating";
+
 import "./Card.css";
 import { useState, useEffect } from "react";
 
@@ -11,6 +13,7 @@ export default function Card({
 	cardIndex,
 	handleDelete,
 	equivalent,
+	handleRating,
 }) {
 	// array of images to pass to the render
 	const [equivalentArray, setEquivalentArray] = useState(
@@ -89,6 +92,7 @@ export default function Card({
 	return (
 		<div className="card" key={cardIndex}>
 			<h2 className="cardHead">{cardData.drinkItem}</h2>
+			<Rating cardData={cardData} handleRating={handleRating} />
 
 			<h3>£{cardData.price}</h3>
 			<div className="cardInfo">

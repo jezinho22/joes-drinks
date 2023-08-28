@@ -19,6 +19,7 @@ export default function Main({ handleShowForm, showForm }) {
 		pricePerUnit: "",
 		multiCount: "",
 		multiVolume: "",
+		rating: 0,
 	});
 
 	//enable form to display multipack as volume
@@ -36,8 +37,6 @@ export default function Main({ handleShowForm, showForm }) {
 		setEquivalent(event.target.value);
 		console.log(event.target.value);
 	}
-
-	// const [cards, setCards] = useState();
 
 	const [cards, setCards] = useLocalStorage("localCards", [
 		{
@@ -147,12 +146,20 @@ export default function Main({ handleShowForm, showForm }) {
 		return array;
 	}
 
-	const handleDelete = (cardName) => {
+	function handleDelete(cardName) {
 		let tempCards = [...cards];
 		const index = tempCards.findIndex((i) => i.drinkItem === cardName);
 		tempCards.splice(index, 1);
 		setCards(tempCards);
-	};
+	}
+
+	function handleRating(rating, cardName) {
+		console.log(rating);
+		let tempCards = [...cards];
+		const index = tempCards.findIndex((card) => card.drinkItem === cardName);
+		tempCards[index].rating = rating;
+		setCards(tempCards);
+	}
 
 	return (
 		<div className="Main">
@@ -168,7 +175,7 @@ export default function Main({ handleShowForm, showForm }) {
 				multipack={multipack}></Form>
 			<div id="drink-cards"></div>
 			<div className="options">
-				<label for="sort-by">
+				<label htmlFor="sort-by">
 					Sort by:
 					<select id="sort-by" name="sort-by" onChange={handleSort}>
 						<option value="drinkItem">Name</option>
@@ -176,7 +183,7 @@ export default function Main({ handleShowForm, showForm }) {
 						<option value="price">Price</option>
 					</select>
 				</label>
-				<label for="comparison">
+				<label htmlFor="comparison">
 					Comparison:
 					<select id="comparison" name="comparison" onChange={handleComparison}>
 						<option value="pint">Pint of beer</option>
@@ -194,6 +201,7 @@ export default function Main({ handleShowForm, showForm }) {
 						handleDelete={handleDelete}
 						handleComparison={handleComparison}
 						equivalent={equivalent}
+						handleRating={handleRating}
 					/>
 				))}
 			</div>
