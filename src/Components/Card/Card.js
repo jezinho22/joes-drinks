@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 
 import pintPot from "../../Resources/pint.png";
 import wineBottle from "../../Resources/wine-bottle01.png";
+import rumAndCoke from "../../Resources/rum-n-coke.png";
+import wineGlass from "../../Resources/wine-glass.png";
 
 export default function Card({
 	cardData,
@@ -39,6 +41,22 @@ export default function Card({
 				drinkHeight: 24,
 			};
 			setEquivalentArray(equivalentDrinks(cardData, equivalentData));
+		} else if (equivalent === "wineGlass") {
+			const equivalentData = {
+				drinkSrc: wineGlass,
+				drinkAlt: "glass of wine",
+				drinkUnits: 1.8,
+				drinkHeight: 24,
+			};
+			setEquivalentArray(equivalentDrinks(cardData, equivalentData));
+		} else if (equivalent === "rumAndCoke") {
+			const equivalentData = {
+				drinkSrc: rumAndCoke,
+				drinkAlt: "single rum and coke",
+				drinkUnits: 1,
+				drinkHeight: 20,
+			};
+			setEquivalentArray(equivalentDrinks(cardData, equivalentData));
 		}
 	}, [cardData, equivalent]);
 
@@ -62,7 +80,7 @@ export default function Card({
 		imageArray.push({
 			src: equivalentData.drinkSrc,
 			alt: equivalentData.drinkAlt,
-			height: partHeight, //`${partHeight}px`,
+			height: partHeight,
 			width: equivalentData.drinkHeight,
 		});
 		return imageArray;

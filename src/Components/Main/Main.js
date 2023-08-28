@@ -177,11 +177,12 @@ export default function Main({ handleShowForm, showForm }) {
 					</select>
 				</label>
 				<label for="comparison">
-					{" "}
 					Comparison:
 					<select id="comparison" name="comparison" onChange={handleComparison}>
 						<option value="pint">Pint of beer</option>
 						<option value="bottleWine">Bottle of wine</option>
+						<option value="wineGlass">Glass of wine</option>
+						<option value="rumAndCoke">Single rum</option>
 					</select>
 				</label>
 			</div>
