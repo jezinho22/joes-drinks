@@ -125,7 +125,8 @@ export default function Main({ handleShowForm, showForm }) {
 		if (sortBy === "drinkItem") {
 			setCards(alphaSort(sorted));
 		} else if (sortBy === "rating") {
-			sorted.sort((a, b) => b[sortBy] - a[sortBy]);
+			sorted.sort((a, b) => a[sortBy] - b[sortBy]);
+			sorted.reverse();
 			setCards(sorted);
 		} else {
 			sorted.sort((a, b) => a[sortBy] - b[sortBy]);
