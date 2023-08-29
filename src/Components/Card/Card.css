@@ -15,7 +15,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	background-color:#b83b94;
+	background-color: #b83b94;
 }
 .cardInfo * {
 	line-height: 1.5rem;
@@ -40,31 +40,30 @@
 	/* margin-top: 1rem; */
 }
 .card p {
-	color:#f8ee2c;
+	color: #f8ee2c;
 	/* margin-top: 0.5rem; */
 }
 .card h4 {
 	margin: 0.2rem 0;
 }
-.pints {
+.drinks {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: center;
-	align-items:flex-end;
-	padding:0.5rem 0;
+	align-items: flex-end;
+	margin: 0.5rem 0;
+	min-height: 60px;
 }
-.pints img {
-	width: 24px;
+.equiv {
 	object-fit: cover;
 	object-position: center bottom;
-	
 }
 .card button {
-	background-color:#f8ee2c;
+	background-color: #f8ee2c;
 	border: none;
 	border-radius: 3px;
-	color:#b83b94;
+	color: #b83b94;
 	align-self: center;
 	margin: 5px 0;
 }
